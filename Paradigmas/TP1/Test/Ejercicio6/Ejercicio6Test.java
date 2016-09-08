@@ -1,10 +1,8 @@
-package Ejercicio6;
+package ejercicio6;
 
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Facu on 31/8/2016.

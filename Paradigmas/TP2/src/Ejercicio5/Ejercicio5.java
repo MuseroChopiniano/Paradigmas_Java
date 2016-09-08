@@ -1,31 +1,27 @@
-package Ejercicio5;
+package ejercicio5;
 
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 
 /**
- * Created by Facu on 3/9/2016.
+ * Created by Facu on 7/9/2016.
  */
-
 public class Ejercicio5 {
 
-
-    public static boolean Primo(int a){
+    public boolean primo(int numero){
         int contador=2;
         boolean primo=true;
 
-        while((primo)&&(contador!=a)){
-            if (a%contador==0){
+        while((primo)&&(contador!=numero)){
+            if (numero%contador==0){
                 primo=false;
-                contador++;
             }
+            contador++;
         }
         return primo;
     }
 
-    public static void Archivos(int[] x) {
+    public void archivos(int[] array) {
         try {
             File primos = new File("primos.txt");
             FileWriter escribirprimos = new FileWriter(primos, true);
@@ -37,28 +33,31 @@ public class Ejercicio5 {
             int contadorpar=0;
             int contadorimpar=0;
 
-            for (int i = 0; i < x.length; i++) {
-                if (Primo(x[i]) == true) {
-                    escribirprimos.write(x[i] + "\n");
-                    escribirprimos.close();
+            for (int i = 0; i < array.length; i++) {
+                if (primo(array[i]) == true) {
+                    escribirprimos.write(array[i] + "\n");
                 }
-                if (x[i]%3000==0){
-                    escribirdivisores.write(x[i] + "\n");
-                    escribirdivisores.close();
+                if (3000%array[i]==0){
+                    escribirdivisores.write(array[i] + "\n");
                 }
 
-                if (x[i]%2==0){
-                   contadorpar++;
-                }else if(x[i]!=0){
+                if (array[i]%2==0){
+                    contadorpar++;
+                }else if(array[i]!=0){
                     contadorimpar++;
                 }
             }
-            escribirpromedios.write("Promedio números pares: " +contadorpar/x.length + "\n");
-            escribirpromedios.write("Promedio números impares: " +contadorimpar/x.length);
+
+            double promediopar=(double)contadorpar/array.length;
+            double promedioimpar=(double)contadorimpar/array.length;
+            escribirpromedios.write("Promedio números pares: " + promediopar + "\n");
+            escribirpromedios.write("Promedio números impares: " + promedioimpar);
+            escribirprimos.close();
+            escribirdivisores.close();
+            escribirpromedios.close();
         }
         catch(Exception e){
             System.out.println("Error");
         }
-
     }
 }

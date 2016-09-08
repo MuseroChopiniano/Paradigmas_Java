@@ -1,4 +1,4 @@
-package Ejercicio3;
+package ejercicio3;
 
 /**
  * Created by Facu on 1/9/2016.

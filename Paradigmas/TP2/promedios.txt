@@ -1,0 +1,2 @@
+Promedio números pares: 0.5
+Promedio números impares: 0.5
