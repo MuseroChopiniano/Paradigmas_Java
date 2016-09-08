@@ -1,4 +1,4 @@
-package Ejercicio2;
+package ejercicio2;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,19 +7,21 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Facu on 31/8/2016.
+ * Created by Facu on 7/9/2016.
  */
 public class Ejercicio2Test {
-    private Ejercicio2 Ejercicio2;
+    private Ejercicio2 ejercicio2;
 
     @Before
     public void setUp() {
-        this.Ejercicio2 = new Ejercicio2();
+        this.ejercicio2 = new Ejercicio2();
     }
+
     @Test
     public void maxPares() throws Exception {
         int[] numeros={42179, 8456, 123, 487};
-        Assert.assertEquals(8456, Ejercicio2.MaxPares(numeros));
+        Assert.assertEquals(8456, ejercicio2.maxPares(numeros));
     }
+
 
 }

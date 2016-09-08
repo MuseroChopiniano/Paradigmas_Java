@@ -1,4 +1,4 @@
-package Ejercicio1;
+package ejercicio1;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -7,21 +7,22 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Facu on 31/8/2016.
+ * Created by Facu on 7/9/2016.
  */
 public class Ejercicio1Test {
-    private Ejercicio1 Ejercicio1;
+    private Ejercicio1 ejercicio1;
 
     @Before
     public void setUp() {
-        this.Ejercicio1 = new Ejercicio1();
+        this.ejercicio1 = new Ejercicio1();
     }
 
     @Test
     public void mayores() throws Exception {
-        int[] numeros={4,2,5,43,66,3,2,11,54,0};
+        int[] array={4,2,5,43,66,3,2,11,54,0};
         int[] maximos={66, 54};
-        Assert.assertArrayEquals(maximos , Ejercicio1.Mayores(numeros) );
+        Assert.assertArrayEquals(maximos , ejercicio1.mayores(array) );
     }
+
 
 }

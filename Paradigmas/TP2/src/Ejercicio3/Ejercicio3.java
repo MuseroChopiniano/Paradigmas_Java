@@ -1,11 +1,10 @@
-package Ejercicio3;
+package ejercicio3;
 
-import javax.swing.*;
 import java.util.Random;
 import java.util.Scanner;
 
 /**
- * Created by Facu on 1/9/2016.
+ * Created by Facu on 7/9/2016.
  */
 public class Ejercicio3 {
     public static String resultado;
@@ -13,7 +12,6 @@ public class Ejercicio3 {
     public static int usuario;
 
     public static String Juego(int x, int y) {
-
         if (x==y) {
             resultado = "Empate";
         } else{
@@ -68,9 +66,8 @@ public class Ejercicio3 {
                 opcionConsola = "Tijeras";
                 break;
         }
+
         System.out.println("La consola eligió \"" + opcionConsola + "\"");
-
         System.out.println(Juego(usuario, consola));
-
     }
 }

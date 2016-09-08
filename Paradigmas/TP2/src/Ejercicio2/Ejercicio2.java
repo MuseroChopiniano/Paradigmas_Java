@@ -1,25 +1,29 @@
-package Ejercicio2;
+package ejercicio2;
 
 /**
- * Created by Facu on 31/8/2016.
+ * Created by Facu on 7/9/2016.
  */
 public class Ejercicio2 {
     private int numero;
-    private int contnumero=0;
-    public int MaxPares(int[] enteros) {
+    private int contadornumero=0;
+
+    public int maxPares(int[] enteros) {
         for (int i=0; i<enteros.length; i++) {
-            int x=i;
+            int aux=enteros[i];
             int contador=0;
             do{
-                int resto=x%10;
+                int resto=aux%10;
                 if (resto%2==0){
                     contador++;
                 }
-            }while (x!=0);
-            if (contador>contnumero) {
-                numero= i;
+                aux=aux/10;
+            }while (aux!=0);
+            if (contador>contadornumero) {
+                contadornumero=contador;
+                numero= enteros[i];
             }
         }
         return numero;
     }
 }
+
