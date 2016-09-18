@@ -20,8 +20,9 @@ public  class Ejercicio2
         public static void main(String args[])
         {
 
-            String path = "C:\\Users\\GastónAlejandro\\Desktop\\Gastón\\UNIVERSIDAD\\UAI\\3er AÑO\\JAVA\\2016-c2-20160829T164004Z\\2016-c2\\TPs\\Parte1\\javaprueba.txt";
+            String path = "LenguajeDeclarativo.txt";
             AnalizadorTxt(path);
+
             interaccion();
 
         }
@@ -29,17 +30,21 @@ public  class Ejercicio2
 
         public static void interaccion()
         {
-            System.out.println("\nIngrese una de las dos posibles preguntas con los siguientes formatos:\nesHermano(nombre1, nombre2)\nesAbuelo(nombreabuelo, nombrenieto)");
+            System.out.println("\nIngrese una de las dos posibles preguntas con los siguientes formatos:\nesHermano(nombre1, nombre2)\nesAbuelo(nombreabuelo, nombrenieto)\nIngrese 0 para salir");
             Scanner scan = new Scanner(System.in);
-            String pregunta = scan.next();
-            String[] partes = pregunta.split("[(]");
-            String[] partes2=partes[1].split(", ");
-            partes2[1]=partes2[1].substring(0,partes2[1].length()-1);
+            String pregunta;
+           do {
+               pregunta = scan.nextLine();
+               String[] partes = pregunta.split("[(]");
+               String[] partes2 = partes[1].split(", ");
+               partes2[1] = partes2[1].substring(0, partes2[1].length() - 1);
 
-            while (partes[0]!="esHermano" | partes[0]!="esAbuelo");
-            {
-                System.out.println("\n" + evaluar(partes[0],partes2[0],partes2[1]));
-            }
+               if (partes[0].compareTo("esHermano") == 0 | partes[0].compareTo("esAbuelo") == 0) {
+                   System.out.println(evaluar(partes[0], partes2[0], partes2[1]));
+               } else {
+                   System.out.println("Sentencia incorrecta");
+               }
+           }while(pregunta.compareTo("0")!=0);
         }
 
         public static void AnalizadorTxt(String archivo)
@@ -53,6 +58,7 @@ public  class Ejercicio2
                 {
                     String[] partes = cadena.split ("[(]");
                     CargarMaps(partes[0],partes[1]);
+                    cadena=bufferread.readLine();
                 }
             }
             catch (FileNotFoundException e)
@@ -68,7 +74,7 @@ public  class Ejercicio2
         {
             dato=dato.substring(0,dato.length()-1);
             String[] partesdato = dato.split(", ");
-            if (tipo=="padre")
+            if (tipo.compareTo("padre")==0)
             {
                 padres.put(partesdato[1],partesdato[0]);
             }
@@ -80,28 +86,55 @@ public  class Ejercicio2
 
         public static String evaluar(String eval, String nombre1, String nombre2)
         {
-            String respuesta="";
-            if (eval=="esHermano")
+            String respuesta="NO";
+            if (eval.compareTo("esHermano")==0)
             {
-                if (padres.get(nombre1)==padres.get(nombre2) || madres.get(nombre1)==madres.get(nombre2))
+                if (padres.get(nombre1) != null & padres.get(nombre2) != null)
                 {
-                    respuesta = "SI";
+                    if (padres.get(nombre1).compareTo(padres.get(nombre2)) == 0)
+                    {
+                        respuesta = "SI";
+                    }
                 }
-                else
+                if (madres.get(nombre1) != null & madres.get(nombre2) != null)
                 {
-                    respuesta="NO";
+                    if (madres.get(nombre1).compareTo(madres.get(nombre2)) == 0)
+                    {
+                        respuesta = "SI";
+                    }
                 }
             }
-            if (eval=="esAbuelo")
+            if (eval.compareTo("esAbuelo")==0)
             {
-                if(padres.get(padres.get(nombre2))==nombre1)
+                if (padres.get(nombre2)!=null & padres.get(padres.get(nombre2))!=null)
                 {
-                    respuesta="SI";
+                    if (padres.get(padres.get(nombre2)).compareTo(nombre1) == 0)
+                    {
+                        respuesta = "SI";
+                    }
                 }
-                else
+                if (padres.get(nombre2)!=null & madres.get(padres.get(nombre2))!=null)
                 {
-                    respuesta="NO";
+                    if (madres.get(padres.get(nombre2)).compareTo(nombre1)==0)
+                    {
+                        respuesta="SI";
+                    }
                 }
+                        if (madres.get(nombre2)!=null & padres.get(madres.get(nombre2))!=null)
+                        {
+                            if (padres.get(madres.get(nombre2)).compareTo(nombre1)==0)
+                            {
+                                respuesta="SI";
+                            }
+
+                        }
+                        if (madres.get(nombre2)!=null & madres.get(madres.get(nombre2))!=null)
+                        {
+                            if (madres.get(madres.get(nombre2)).compareTo(nombre1)==0)
+                            {
+                                respuesta="SI";
+                            }
+                        }
             }
             return respuesta;
         }

@@ -1,0 +1,5 @@
+padre(Herminio, Gaston)
+madre(Angelica, Gaston)
+padre(Alberto, Angelica)
+padre(Herminio, Silvana)
+madre(Angelica, Alejandra)
