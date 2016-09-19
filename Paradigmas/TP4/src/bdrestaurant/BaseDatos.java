@@ -87,7 +87,7 @@ public class BaseDatos
             Class.forName("org.h2.Driver");
             Connection conexion = DriverManager.getConnection(ConnStr,"sa","");
             Statement sentencia = conexion.createStatement();
-            sentencia.executeUpdate("DELETE * FROM " + Tabla);
+            sentencia.executeUpdate("DROP TABLE " + Tabla);
             sentencia.close();
             conexion.close();
         } catch (ClassNotFoundException e) {
