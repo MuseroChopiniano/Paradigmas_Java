@@ -24,10 +24,7 @@ public  class Ejercicio2
             AnalizadorTxt(path);
 
             interaccion();
-
         }
-
-
         public static void interaccion()
         {
             System.out.println("\nIngrese una de las dos posibles preguntas con los siguientes formatos:\nesHermano(nombre1, nombre2)\nesAbuelo(nombreabuelo, nombrenieto)\nIngrese 0 para salir");
