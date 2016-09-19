@@ -6,7 +6,27 @@ import java.sql.*;
  */
 public class BaseDatos
 {
-    private static String ConnStr="JDBC:h2:C:/restaurant";
+
+
+    private static String ConnStr="jdbc:h2:C:\\Users\\GastónAlejandro\\Desktop\\Restaurant\\Restaurant";
+
+    public  static void Inicializar()
+    {
+        try {
+            Class.forName("org.h2.Driver");
+            Connection conexion = DriverManager.getConnection(ConnStr,"sa","");
+            Statement sentencia = conexion.createStatement();
+            sentencia.execute("CREATE TABLE INGREDIENTES(ID INT,NOMBRE VARCHAR(255),TIPO VARCHAR(250))");
+            sentencia.close();
+            conexion.close();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
     public static ResultSet Consulta (String Comando)
     {
         ResultSet retorno=null;
@@ -40,6 +60,7 @@ public class BaseDatos
         catch (SQLException ex){}
 
     }
+
     public static void BorrarTodo(String Tabla)
     {
         try {
@@ -55,6 +76,9 @@ public class BaseDatos
             e.printStackTrace();
         }
     }
-
+    public static int ultimoID (String Tabla)
+    {
+     return 0;
+    }
 
 }
