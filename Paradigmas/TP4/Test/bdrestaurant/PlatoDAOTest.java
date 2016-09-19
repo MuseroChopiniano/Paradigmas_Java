@@ -1,0 +1,89 @@
+package bdrestaurant;
+
+import javafx.print.PageLayout;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.*;
+
+/**
+ * Created by Facu on 19/9/2016.
+ */
+public class PlatoDAOTest {
+    @Before
+    public void setUp() throws Exception {
+        IngredienteDAO.altaIngrediente("CarneParaMilanesa", "Carne");
+        IngredienteDAO.altaIngrediente("PanRallado", "Otros");
+        IngredienteDAO.altaIngrediente("Huevo", "Otros");
+        IngredienteDAO.altaIngrediente("Lechuga", "Verdura");
+        IngredienteDAO.altaIngrediente("Tomate", "Verdura");
+        IngredienteDAO.altaIngrediente("Fideos", "Pasta");
+        IngredienteDAO.altaIngrediente("Salsa", "Otros");
+        IngredienteDAO.altaIngrediente("Cebolla", "Verdura");
+
+        List<String> ingredientesMilanesa = new ArrayList<String>();
+        ingredientesMilanesa.add("CarneParaMilanesa");
+        ingredientesMilanesa.add("PanRallado");
+        ingredientesMilanesa.add("Huevo");
+
+        List<String> ingredientesEnsalada = new ArrayList<String>();
+        ingredientesEnsalada.add("Lechuga");
+        ingredientesEnsalada.add("Tomate");
+        ingredientesEnsalada.add("Cebolla");
+
+        List<String> ingredientesFideos = new ArrayList<String>();
+        ingredientesFideos.add("Fideos");
+        ingredientesEnsalada.add("Salsa");
+
+        PlatoDAO.altaPlato("Milanesa", ingredientesMilanesa, 70);
+        PlatoDAO.altaPlato("EnsaladaMixta", ingredientesEnsalada, 50);
+        PlatoDAO.altaPlato("FideosConSalsa", ingredientesFideos, 70);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        BaseDatos.BorrarTodo("PLATO");
+    }
+
+    @Test
+    public void testCargaInicial() throws Exception{
+        Assert.assertTrue(3==PlatoDAO.contar());
+    }
+
+    @Test
+    public void testAltaPlato() throws Exception {
+        List<String> ingredientesAlta = new ArrayList<String>();
+        ingredientesAlta.add("Cebolla");
+        ingredientesAlta.add("Tomate");
+        ingredientesAlta.add("Lechuga");
+        ingredientesAlta.add("Huevo");
+
+        PlatoDAO.altaPlato("EnsaladaCompleta", ingredientesAlta, 85);
+Assert.assertTrue(4==PlatoDAO.contar());
+    }
+
+    @Test
+    public void testBorrarPlato() throws Exception {
+        PlatoDAO.borrarPlato("EnsaladaMixta");
+        Assert.assertTrue(3== PlatoDAO.contar());
+    }
+
+    @Test
+    public void testModificarPlato() throws Exception {
+        List<String> ingredientesEnsalada = new ArrayList<String>();
+        ingredientesEnsalada.add("Lechuga");
+        ingredientesEnsalada.add("Tomate");
+        PlatoDAO.modificarPlato("EnsaladaCompleta", "Ensalada", ingredientesEnsalada, 50);
+
+        List<String> resultado = PlatoDAO.devolverPlatos();
+        Assert.assertTrue("Ensalada"==resultado.get(2));
+    }
+}
