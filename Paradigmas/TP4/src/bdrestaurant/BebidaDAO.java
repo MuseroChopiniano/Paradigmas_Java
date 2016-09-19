@@ -9,8 +9,6 @@ import java.util.List;
  * Created by Facu on 19/9/2016.
  */
 
-
-
 public class BebidaDAO {
 
     public static void altaBebida(String nombre, int tamano, double precio) throws SQLException {
