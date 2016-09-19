@@ -14,8 +14,11 @@ import static org.junit.Assert.*;
  * Created by Facu on 19/9/2016.
  */
 public class BebidaDAOTest {
+    private BebidaDAO bebidaDAO;
+
     @Before
     public void setUp() throws Exception {
+this.bebidaDAO = new BebidaDAO();
         BebidaDAO.altaBebida("CervezaStella", 1000, 80);
         BebidaDAO.altaBebida("CervezaStellaPorron", 350, 40);
         BebidaDAO.altaBebida("CocaCola", 600, 40);

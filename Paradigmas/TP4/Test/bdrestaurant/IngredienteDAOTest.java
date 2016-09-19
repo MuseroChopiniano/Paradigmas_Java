@@ -16,7 +16,7 @@ public class IngredienteDAOTest {
 
     @org.junit.Before
     public void setUp() throws Exception {
-ingredienteDAO=new IngredienteDAO();
+        ingredienteDAO=new IngredienteDAO();
         ingredienteDAO.Inicializar();
         ingredienteDAO.altaIngrediente("Papa","Verdura");
         ingredienteDAO.altaIngrediente("CarneParaMilanesa","Carne");
