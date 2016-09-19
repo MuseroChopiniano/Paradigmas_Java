@@ -20,7 +20,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-<<<<<<< HEAD
     <orderEntry type="library" name="h2-1.4.192 " level="project" />
 =======
     <orderEntry type="library" name="h2-1.4.192" level="project" />

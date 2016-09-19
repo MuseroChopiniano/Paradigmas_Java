@@ -20,21 +20,24 @@ public class PromocionDAOTest {
     public void setUp() throws Exception {
     promocionDAO = new PromocionDAO();
         promocionDAO.Inicializar();
-        List<String> listaPlatos= new ArrayList<String>();
-        listaPlatos.add("Milanesa");
-        listaPlatos.add("Ensalada Mixta");
-        listaPlatos.add("Fideos");
-        promocionDAO.altaPromocion("Mila con Ensalada","Agua sin Gas",listaPlatos,100);
+        List<String> listaPlatosMila= new ArrayList<String>();
+        listaPlatosMila.add("Milanesa");
+        listaPlatosMila.add("Ensalada Mixta");
+        promocionDAO.altaPromocion("Mila con Ensalada","Agua sin Gas",listaPlatosMila,100);
+        List<String> listaPlatosFideos= new ArrayList<String>();
+        listaPlatosFideos.add("Fideos");
+        promocionDAO.altaPromocion("Fideos con bebida","CervezaStellaPorron",listaPlatosFideos,100);
+
             }
 
     @After
     public void tearDown() throws Exception {
-
+        promocionDAO.BorrarTodo();
     }
 
     @Test
     public void cargaInicial() throws Exception{
-
+        Assert.assertTrue(2==promocionDAO.devolverPromociones().size());
     }
     @Test
     public void altaPromocion() throws Exception {

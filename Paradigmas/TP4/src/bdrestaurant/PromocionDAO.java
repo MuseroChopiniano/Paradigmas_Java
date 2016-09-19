@@ -1,5 +1,8 @@
 package bdrestaurant;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -38,12 +41,30 @@ public class PromocionDAO
     /** FUNCION SIN COMPLETAR*/
 
     public static void modificarPromocion(String nombreViejo, String nombreNuevo, String bebidanueva, List<String> platosNuevos) {
-        BaseDatos.Actualizar("DELETE FROM PROMOCIONPLATO WHERE Promocion_Nomre LIKE '" + nombreViejo + "';");
+        BaseDatos.Actualizar("DELETE FROM PROMOCIONPLATO WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");
 
         for (int i = 0; i < platosNuevos.size(); i++) {
             BaseDatos.Actualizar("INSERT INTO PROMOCIONPLATO ");
 
         }
         BaseDatos.Actualizar("UPDATE PROMOCION SET Promocion_Nombre='" + nombreNuevo + "', Promocion_Bebida='" + bebidanueva + "' WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");
+    }
+    public static List<String> devolverPromociones()
+    {
+        List<String> Lista = new ArrayList<String>();
+        ResultSet resultado= BaseDatos.Consulta("SELECT Promocion_Nombre FROM Promocion");
+        try {
+            while(resultado.next()){
+                Lista.add(resultado.getString("Promocion_Nombre"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return  Lista;
+    }
+    public static void BorrarTodo()
+    {
+        BaseDatos.BorrarTodo("PROMOCION");
+        BaseDatos.BorrarTodo("PROMOCIONPLATO");
     }
 }

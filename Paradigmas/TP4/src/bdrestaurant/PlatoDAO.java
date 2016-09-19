@@ -38,29 +38,28 @@ public class PlatoDAO {
     }
 
     public static void modificarPlato(String nombreViejo, String nombreNuevo, List<String> ingredientesNuevos, double precioNuevo){
-        String modificar = "UPDATE BEBIDA SET Plato_Nombre = '" + nombreNuevo + "', Plato_Ingredientes" + ingredientesNuevos + ", Plato_Precio = " + precioNuevo + "WHERE Plato_Nombre LIKE '" + nombreViejo + "';";
+        String modificar = "UPDATE PLATO SET Plato_Nombre = '" + nombreNuevo + "', Plato_Precio = " + precioNuevo + " WHERE Plato_Nombre LIKE '" + nombreViejo + "';";
         BaseDatos.Actualizar(modificar);
     }
 
     public static List<String> devolverPlatos() throws SQLException {
         List<String> listaPlatos = new ArrayList<String>();
-        String select="SELECT Nombre FROM PLATOS;";
+        String select="SELECT Plato_Nombre FROM PLATO;";
 
         ResultSet resultSet = BaseDatos.Consulta(select);
 
         while (resultSet.next()){
-            listaPlatos.add(resultSet.getString(0));
+            listaPlatos.add(resultSet.getString("Plato_Nombre"));
         }
-
         return listaPlatos;
     }
 
     public static int contar(){
         int contador=0;
         try {
-            ResultSet resultSet = BaseDatos.Consulta("SELECT COUNT(Plato_Nombre FROM PLATO;");
+            ResultSet resultSet = BaseDatos.Consulta("SELECT COUNT(*) FROM PLATO;");
             resultSet.next();
-            contador = resultSet.getInt(0);
+            contador = resultSet.getInt(1);
             resultSet.close();
         } catch (SQLException e){
             System.out.println(e.getMessage());

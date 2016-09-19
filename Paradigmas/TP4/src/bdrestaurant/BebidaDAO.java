@@ -5,9 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Facu on 19/9/2016.
- */
 
 public class BebidaDAO {
 
@@ -50,7 +47,7 @@ public class BebidaDAO {
         ResultSet resultSet = BaseDatos.Consulta(select);
 
         while (resultSet.next()){
-            listaBebidas.add(resultSet.getString(0));
+            listaBebidas.add(resultSet.getString("Bebida_Nombre"));
         }
 
         return listaBebidas;
@@ -59,9 +56,9 @@ public class BebidaDAO {
     public static int contar(){
         int contador=0;
         try {
-            ResultSet resultSet = BaseDatos.Consulta("SELECT COUNT(Bebida_Nombre FROM BEBIDA;");
+            ResultSet resultSet = BaseDatos.Consulta("SELECT COUNT(*) FROM BEBIDA;");
             resultSet.next();
-            contador = resultSet.getInt(0);
+            contador = resultSet.getInt(1);
             resultSet.close();
         } catch (SQLException e){
             System.out.println(e.getMessage());

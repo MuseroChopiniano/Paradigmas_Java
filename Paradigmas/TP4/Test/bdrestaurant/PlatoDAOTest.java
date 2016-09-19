@@ -20,6 +20,8 @@ import static org.junit.Assert.*;
 public class PlatoDAOTest {
     @Before
     public void setUp() throws Exception {
+        IngredienteDAO.Inicializar();
+        PlatoDAO.Inicializar();
         IngredienteDAO.altaIngrediente("CarneParaMilanesa", "Carne");
         IngredienteDAO.altaIngrediente("PanRallado", "Otros");
         IngredienteDAO.altaIngrediente("Huevo", "Otros");
@@ -51,6 +53,7 @@ public class PlatoDAOTest {
     @After
     public void tearDown() throws Exception {
         BaseDatos.BorrarTodo("PLATO");
+        BaseDatos.BorrarTodo("INGREDIENTE");
     }
 
     @Test
@@ -73,7 +76,7 @@ Assert.assertTrue(4==PlatoDAO.contar());
     @Test
     public void testBorrarPlato() throws Exception {
         PlatoDAO.borrarPlato("EnsaladaMixta");
-        Assert.assertTrue(3== PlatoDAO.contar());
+        Assert.assertTrue(2== PlatoDAO.contar());
     }
 
     @Test
@@ -81,9 +84,7 @@ Assert.assertTrue(4==PlatoDAO.contar());
         List<String> ingredientesEnsalada = new ArrayList<String>();
         ingredientesEnsalada.add("Lechuga");
         ingredientesEnsalada.add("Tomate");
-        PlatoDAO.modificarPlato("EnsaladaCompleta", "Ensalada", ingredientesEnsalada, 50);
-
-        List<String> resultado = PlatoDAO.devolverPlatos();
-        Assert.assertTrue("Ensalada"==resultado.get(2));
+        PlatoDAO.modificarPlato("EnsaladaMixta", "Ensalada", ingredientesEnsalada, 50);
+        Assert.assertTrue(PlatoDAO.devolverPlatos().contains("Ensalada"));
     }
 }
