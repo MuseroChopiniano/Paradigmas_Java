@@ -6,7 +6,7 @@ import java.sql.*;
  */
 public class BaseDatos
 {
-    private static String ConnStr="JDBC:h2:C:/restaurant";
+    private static String ConnStr="jdbc:h2:C:/restaurant";
     public static ResultSet Consulta (String Comando)
     {
         ResultSet retorno=null;
