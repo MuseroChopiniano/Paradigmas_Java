@@ -14,17 +14,14 @@ public class BaseDatos
             Connection conexion = DriverManager.getConnection(ConnStr,"sa","");
             Statement sentencia = conexion.createStatement();
             sentencia.execute(comando);
-            System.out.println("Se creo la tabla correctamente");
+          /**  System.out.println("Se creo la tabla correctamente");*/
             sentencia.close();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            /**e.printStackTrace();*/
         } catch (SQLException e) {
-            e.printStackTrace();
+            /**e.printStackTrace();*/
         }
-
-
     }
-
     private static String ConnStr="jdbc:h2:C:/Users/GastónAlejandro/Desktop/Restaurant/restaurantDB";
     public static ResultSet Consulta (String Comando)
     {

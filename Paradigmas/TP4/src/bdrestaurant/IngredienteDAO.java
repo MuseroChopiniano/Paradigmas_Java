@@ -15,7 +15,7 @@ public class IngredienteDAO
            /**funcion para inicializar para inicializar la tabla en la base de datos*/
         public static void Inicializar()
     {
-        BaseDatos.Inicializar("CREATE TABLE INGREDIENTE(Ingrediente_ID INT,Ingrediente_Nombre VARCHAR(255),Ingrediente_Tipo VARCHAR(250));");
+        BaseDatos.Inicializar("CREATE TABLE INGREDIENTE(Ingrediente_Id INT,Ingrediente_Nombre VARCHAR(255),Ingrediente_Tipo VARCHAR(250));");
     }
 
     /**funcion que agrega ingredientes en la tabla de la BD*/
