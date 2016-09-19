@@ -1,6 +1,4 @@
-package Ejercicio3;
-
-import sun.font.TrueTypeFont;
+package ejercicio3;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;

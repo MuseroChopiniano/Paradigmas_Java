@@ -1,4 +1,4 @@
-package Ejercicio8;
+package ejercicio8;
 
 /**
  * Created by GastónAlejandro on 18/09/2016.
