@@ -11,9 +11,24 @@ import java.util.List;
 
 public class BebidaDAO {
 
+    public static void Inicializar()
+    {
+        BaseDatos.Inicializar("CREATE TABLE BEBIDA(Bebida_Id INT,Bebida_Nombre VARCHAR(255),Bebida_Tamaño INT, Bebida_Precio DOUBLE);");
+    }
+
     public static void altaBebida(String nombre, int tamano, double precio) throws SQLException {
-        int Id = contar() +1;
-        String insert = "INSERT INTO BEBIDA VALUES (" + Id + ", '" + nombre + "', "+ tamano + ", " + precio + ");";
+
+        int id= 0;
+        try {
+            id = BaseDatos.ObtenerUltimoID("BEBIDA");
+        }
+        catch (NullPointerException ex){
+        }
+        finally {
+            id+=1;
+        }
+
+        String insert = "INSERT INTO BEBIDA VALUES (" + id + ", '" + nombre + "', "+ tamano + ", " + precio + ");";
         BaseDatos.Actualizar(insert);
     }
 
@@ -25,7 +40,7 @@ public class BebidaDAO {
     public static void modificarBebida(String nombreViejo, String nombreNuevo, int tamanoNuevo, double precioNuevo){
         String modificar = "UPDATE BEBIDA SET Bebida_Nombre = '" + nombreNuevo + "', Bebida_Tamaño = " + tamanoNuevo +
                            ", Bebida_Precio = " + precioNuevo + "WHERE Bebida_Nombre LIKE '" + nombreViejo + "';";
-    BaseDatos.Actualizar(modificar);
+        BaseDatos.Actualizar(modificar);
     }
 
     public static List<String>  devolverBebidas() throws SQLException {

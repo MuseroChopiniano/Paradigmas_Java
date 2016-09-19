@@ -10,9 +10,25 @@ import java.util.List;
  */
 public class PlatoDAO {
 
+    public static void Inicializar()
+    {
+        BaseDatos.Inicializar("CREATE TABLE PLATO(Plato_Id INT,Plato_Nombre VARCHAR(255), Plato_Precio DOUBLE);");
+    }
+
     public static void altaPlato(String nombre, List<String> ingredientes, double precio) throws SQLException {
-        int Id = contar()+1;
-        String insert = "INSERT INTO PLATO (Plato_Nombre, Plato_Precio)  VALUES ('" + nombre + "', " + precio + ");";
+        int id= 0;
+        try {
+            id = BaseDatos.ObtenerUltimoID("PLATO");
+        }
+        catch (NullPointerException ex){
+        }
+        finally {
+            id+=1;
+        }
+
+        int idIngrediente;
+
+        String insert = "INSERT INTO PLATO VALUES (" + id + ", '" + nombre + "', " + precio + ");";
         BaseDatos.Actualizar(insert);
     }
 
