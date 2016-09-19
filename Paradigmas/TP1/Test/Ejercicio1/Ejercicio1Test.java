@@ -1,4 +1,4 @@
-package Ejercicio1;
+package ejercicio1;
 
 import org.junit.Assert;
 import org.junit.Before;
