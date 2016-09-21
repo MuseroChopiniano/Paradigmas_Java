@@ -1,14 +1,12 @@
 package ejercicio5;
 
 import ejercicio7.Ejercicio7;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -23,7 +21,6 @@ public class Ejercicio5Test {
     public void setUp() throws Exception {
         this.ejercicio5 = new Ejercicio5();
     }
-
     @Test
     public void archivos() throws Exception {
         ArrayList<String> primosList = new ArrayList<String>();

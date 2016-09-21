@@ -22,7 +22,7 @@ public class Ejercicio6 {
     public int[] gemelos(int numero) {
         int aux=numero;
         while(resultado[0]==0 && resultado[1]==0){
-            if(primo(aux)==true && primo(aux+2)==true){
+            if(primo(aux) && primo(aux+2)){
                 resultado[0]=aux;
                 resultado[1]=aux+2;
             } else {

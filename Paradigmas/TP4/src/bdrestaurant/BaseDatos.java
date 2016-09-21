@@ -63,7 +63,7 @@ public class BaseDatos
                 Class.forName("org.h2.Driver");
                 Connection conexion=DriverManager.getConnection(ConnStr,"sa","");
                 Statement sentencia=conexion.createStatement();
-                ResultSet resultado=sentencia.executeQuery("SELECT MAX(ID) FROM "+tabla);
+                ResultSet resultado=sentencia.executeQuery("SELECT MAX(1) FROM "+tabla);
                 resultado.next();
                 return resultado.getInt(1);
 

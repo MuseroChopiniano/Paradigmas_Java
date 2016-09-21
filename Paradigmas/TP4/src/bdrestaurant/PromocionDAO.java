@@ -16,7 +16,7 @@ public class PromocionDAO
         BaseDatos.Inicializar("CREATE TABLE PROMOCION(Promocion_Id INT,Promocion_Nombre VARCHAR(255),Promocion_Bebida VARCHAR(255),Promocion_Precio DOUBLE);");
         BaseDatos.Inicializar("CREATE TABLE PROMOCIONPLATO(PromocionPlato_Id INT, Promocion_Nombre VARCHAR(255),Plato_Nombre VARCHAR(255));");
     }
-    public static void altaPromocion(String nombre, String bebida, List<String> platos, int precio)
+    public static void altaPromocion(String nombre, String bebida, List<String> platos, double precio)
     {
         int idPromo= 0;
         int idPromoPlato=0;
@@ -27,28 +27,27 @@ public class PromocionDAO
         catch (NullPointerException ex){
         }
         finally {
-            idPromo+=1;
+            idPromo=idPromo+1;
             idPromoPlato+=1;
         }
 
-        BaseDatos.Actualizar("INSERT INTO PROMOCION VALUES (" + idPromo + ", '" + nombre + "', '" + bebida + "');");
+        BaseDatos.Actualizar("INSERT INTO PROMOCION VALUES (" + idPromo + ", '" + nombre + "', '" + bebida + "', " + precio + ");");
         for (int i=0;i<platos.size();i++) {
-            BaseDatos.Actualizar("INSERT INTO PROMOCIONPLATO VALUES (" + idPromoPlato + "," + nombre + ",'" + platos.get(i) + "';");
+            BaseDatos.Actualizar("INSERT INTO PROMOCIONPLATO VALUES (" + idPromoPlato + "," + nombre + ",'" + platos.get(i) + "');");
             idPromoPlato+=1;
         }
     }
 
     /** FUNCION SIN COMPLETAR*/
 
-    public static void modificarPromocion(String nombreViejo, String nombreNuevo, String bebidanueva, List<String> platosNuevos) {
-        BaseDatos.Actualizar("DELETE FROM PROMOCIONPLATO WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");
+    public static void modificarPromocion(String nombreViejo, String nombreNuevo, String bebidanueva, List<String> platosNuevos, double precioNuevo) {
+        /**BaseDatos.Actualizar("DELETE FROM PROMOCIONPLATO WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");*/
 
-        for (int i = 0; i < platosNuevos.size(); i++) {
+       /** for (int i = 0; i < platosNuevos.size(); i++) {
             BaseDatos.Actualizar("INSERT INTO PROMOCIONPLATO ");
-
         }
-        BaseDatos.Actualizar("UPDATE PROMOCION SET Promocion_Nombre='" + nombreNuevo + "', Promocion_Bebida='" + bebidanueva + "' WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");
-    }
+        BaseDatos.Actualizar("UPDATE PROMOCION SET Promocion_Nombre='" + nombreNuevo + "', Promocion_Bebida='" + bebidanueva + "' WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");*/
+        BaseDatos.Actualizar("UPDATE PROMOCION SET Promocion_Nombre='" + nombreNuevo + "', Promocion_Bebida='" + bebidanueva + "', Promocion_Precio = " + precioNuevo + "  WHERE Promocion_Nombre LIKE '" + nombreViejo + "';");    }
     public static List<String> devolverPromociones()
     {
         List<String> Lista = new ArrayList<String>();
@@ -67,4 +66,9 @@ public class PromocionDAO
         BaseDatos.BorrarTodo("PROMOCION");
         BaseDatos.BorrarTodo("PROMOCIONPLATO");
     }
+    public static void BorrarPromocion(String nombre)
+    {
+        BaseDatos.Actualizar("DELETE FROM PROMOCION WHERE Promocion_Nombre LIKE '" + nombre + "';");
+    }
+
 }

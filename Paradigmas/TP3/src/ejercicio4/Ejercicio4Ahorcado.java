@@ -75,7 +75,7 @@ static String[] palabras;
 
     public static void cargarPalabras() throws IOException {
         String texto="";
-        FileReader lector= new FileReader("C:\\Users\\Facu\\Downloads\\Paradigmas_Java\\Paradigmas\\TP3\\diccionario.txt");
+        FileReader lector= new FileReader("C:\\Users\\GastónAlejandro\\Desktop\\Gastón\\UNIVERSIDAD\\UAI\\3er AÑO\\JAVA\\Paradigmas_Java\\Paradigmas\\TP3\\diccionario.txt");
         BufferedReader contenido = new BufferedReader(lector);
         ArrayList<String> aux=new ArrayList<>();
 

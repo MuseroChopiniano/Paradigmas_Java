@@ -17,7 +17,7 @@ public class Ejercicio7FibonacciTest {
 
     @Test
     public void fibonacci() throws Exception {
-        Assert.assertTrue(13== fibonacci.Fibonacci(6));
+        Assert.assertTrue(21== fibonacci.Fibonacci(8));
     }
 
 }

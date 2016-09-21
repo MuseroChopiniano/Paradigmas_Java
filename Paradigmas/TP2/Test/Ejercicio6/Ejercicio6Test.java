@@ -19,7 +19,7 @@ public class Ejercicio6Test {
 
     @Test
     public void gemelos() throws Exception {
-        int[] resultado={17,19};
-        Assert.assertArrayEquals(resultado, ejercicio6.gemelos(12));
+        int[] resultado={3,5};
+        Assert.assertArrayEquals(resultado, ejercicio6.gemelos(1));
     }
 }

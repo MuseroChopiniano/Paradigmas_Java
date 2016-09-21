@@ -20,7 +20,7 @@ public  class Ejercicio2
         public static void main(String args[])
         {
 
-            String path = "LenguajeDeclarativo.txt";
+            String path = "C:\\Users\\GastónAlejandro\\Desktop\\Gastón\\UNIVERSIDAD\\UAI\\3er AÑO\\JAVA\\Paradigmas_Java\\Paradigmas\\TP3\\src\\ejercicio2\\LenguajeDeclarativo.txt";
             AnalizadorTxt(path);
 
             interaccion();

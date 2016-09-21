@@ -22,12 +22,11 @@ public class PromocionDAOTest {
         promocionDAO.Inicializar();
         List<String> listaPlatosMila= new ArrayList<String>();
         listaPlatosMila.add("Milanesa");
-        listaPlatosMila.add("Ensalada Mixta");
-        promocionDAO.altaPromocion("Mila con Ensalada","Agua sin Gas",listaPlatosMila,100);
+        listaPlatosMila.add("EnsaladaMixta");
+        promocionDAO.altaPromocion("MilaconEnsalada","AguasinGas",listaPlatosMila,100);
         List<String> listaPlatosFideos= new ArrayList<String>();
         listaPlatosFideos.add("Fideos");
-        promocionDAO.altaPromocion("Fideos con bebida","CervezaStellaPorron",listaPlatosFideos,100);
-
+        promocionDAO.altaPromocion("FideosconBebida","CervezaStellaPorron",listaPlatosFideos,100);
             }
 
     @After
@@ -41,7 +40,25 @@ public class PromocionDAOTest {
     }
     @Test
     public void altaPromocion() throws Exception {
-
+        List<String> listaPlatos = new ArrayList<String>();
+        listaPlatos.add("Milanesa");
+        listaPlatos.add("PapasFritas");
+        promocionDAO.altaPromocion("MilaConFritas","CocaCola",listaPlatos,150);
+        Assert.assertTrue(3==promocionDAO.devolverPromociones().size());
+        Assert.assertTrue(promocionDAO.devolverPromociones().contains("MilaConFritas"));
     }
-
+    @Test
+    public void borrarPromocion() throws  Exception {
+        promocionDAO.BorrarPromocion("MilaconEnsalada");
+        Assert.assertTrue(1==promocionDAO.devolverPromociones().size());
+        Assert.assertFalse(promocionDAO.devolverPromociones().contains("MilaconEnsalada"));
+    }
+    @Test
+    public void modificarPromocion() throws Exception{
+        List<String> listaPlatos = new ArrayList<String>();
+        listaPlatos.add("Milanesa");
+        listaPlatos.add("PapasFritas");
+        promocionDAO.modificarPromocion("MilaconEnsalada","MilaconFritas","CocaCola",listaPlatos,153.50);
+        Assert.assertTrue(promocionDAO.devolverPromociones().contains("MilaconFritas"));
+    }
 }
