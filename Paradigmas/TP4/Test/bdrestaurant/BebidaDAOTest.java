@@ -5,10 +5,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import static org.junit.Assert.*;
-
 /**
  * Created by Facu on 19/9/2016.
  */
@@ -18,7 +14,7 @@ public class BebidaDAOTest {
     @Before
     public void setUp() throws Exception {
     this.bebidaDAO = new BebidaDAO();
-        BebidaDAO.Inicializar();
+        BebidaDAO.inicializar();
         BebidaDAO.altaBebida("CervezaStella", 1000, 80);
         BebidaDAO.altaBebida("CervezaStellaPorron", 350, 40);
         BebidaDAO.altaBebida("CocaCola", 600, 40);
@@ -27,7 +23,7 @@ public class BebidaDAOTest {
 
     @After
     public void tearDown() throws Exception {
-        BaseDatos.BorrarTodo("BEBIDA");
+        BaseDatos.borrarTodo("BEBIDA");
             }
 
     @Test
@@ -41,7 +37,7 @@ public class BebidaDAOTest {
     @Test
     public void testAltaBebida() throws Exception {
         BebidaDAO.altaBebida("Jugo", 150, 15);
-        Assert.assertTrue(5==BebidaDAO.contar());
+        Assert.assertTrue(BebidaDAO.devolverBebidas().contains("Jugo"));
     }
 
     @Test

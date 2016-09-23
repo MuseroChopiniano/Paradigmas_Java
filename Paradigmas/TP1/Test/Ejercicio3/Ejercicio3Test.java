@@ -18,7 +18,7 @@ public class Ejercicio3Test {
 
     @Test
     public void factorial() throws Exception {
-        Assert.assertTrue(24==Ejercicio3.Factorial(4));
+        Assert.assertTrue(24==Ejercicio3.factorial(4));
     }
 
 }

@@ -11,21 +11,25 @@ public class Ejercicio5Test {
     private  Ejercicio5 Ejercicio5;
     private  int[][] matrizoriginal;
     private  int[][] matriztr;
-
+    private String matrizTransPath="C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/MatrizTranspuesta.txt";
     @Before
     public void setUp() throws Exception {
         Ejercicio5=new Ejercicio5();
-        matrizoriginal=Ejercicio5.Matriz("C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/Matriz.txt");
-        matriztr=Ejercicio5.MatrizTranspuesta(matrizoriginal);
-        Ejercicio5.GuardarMatrizTrans(matriztr,"C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/MatrizTranspuesta.txt");
+        matrizoriginal=Ejercicio5.leerMatriz("C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/Matriz.txt");
+        matriztr=Ejercicio5.matrizTranspuesta(matrizoriginal);
+        Ejercicio5.guardarMatrizTrans(matriztr,matrizTransPath);
     }
     @Test
     public void CantFilas() throws  Exception{
-        Assert.assertTrue(matriztr.length==matrizoriginal[0].length);
+        int [][] matrizTransLeida;
+        matrizTransLeida=Ejercicio5.leerMatriz(matrizTransPath);
+        Assert.assertTrue(matrizTransLeida.length==matrizoriginal[0].length);
     }
     @Test
     public void CantColumnas() throws  Exception{
-        Assert.assertTrue(matriztr[0].length==matrizoriginal.length);
+        int [][] matrizTransLeida;
+        matrizTransLeida=Ejercicio5.leerMatriz(matrizTransPath);
+        Assert.assertTrue(matrizTransLeida[0].length==matrizoriginal.length);
     }
 
 

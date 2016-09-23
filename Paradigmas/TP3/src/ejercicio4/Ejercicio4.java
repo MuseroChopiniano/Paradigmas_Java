@@ -10,7 +10,7 @@ public class Ejercicio4 {
 
     boolean resultado=true;
 
-    public boolean Balanceo(String expresion) {
+    public boolean balanceo(String expresion) {
         Stack<String> pila = new Stack<String>();
         for (int i = 0; i < expresion.length(); i++){
             switch (expresion.charAt(i)) {

@@ -5,10 +5,10 @@ package ejercicio7;
  */
 public class Ejercicio7Factorial {
 
-    public int Factorial(int n) {
+    public int factorial(int n) {
         int resultado=1;
         if (n>1){
-            resultado = n * (Factorial(n - 1));
+            resultado = n * (factorial(n - 1));
         }
         return resultado;
     }

@@ -4,7 +4,7 @@ package ejercicio1;
  * Created by GastónAlejandro on 06/09/2016.
  */
 public class Ejercicio1 {
-    public double RetornaResultado (String pString)
+    public double retornaResultado(String pString)
     {
         double mResultado = 0;
         String operandos [];

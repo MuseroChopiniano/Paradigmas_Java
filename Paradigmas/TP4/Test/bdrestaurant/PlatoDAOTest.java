@@ -1,18 +1,13 @@
 package bdrestaurant;
 
-import javafx.print.PageLayout;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Facu on 19/9/2016.
@@ -20,8 +15,8 @@ import static org.junit.Assert.*;
 public class PlatoDAOTest {
     @Before
     public void setUp() throws Exception {
-        IngredienteDAO.Inicializar();
-        PlatoDAO.Inicializar();
+        IngredienteDAO.inicializar();
+        PlatoDAO.inicializar();
         IngredienteDAO.altaIngrediente("CarneParaMilanesa", "Carne");
         IngredienteDAO.altaIngrediente("PanRallado", "Otros");
         IngredienteDAO.altaIngrediente("Huevo", "Otros");
@@ -52,8 +47,8 @@ public class PlatoDAOTest {
 
     @After
     public void tearDown() throws Exception {
-        BaseDatos.BorrarTodo("PLATO");
-        BaseDatos.BorrarTodo("INGREDIENTE");
+        BaseDatos.borrarTodo("PLATO");
+        BaseDatos.borrarTodo("INGREDIENTE");
     }
 
     @Test

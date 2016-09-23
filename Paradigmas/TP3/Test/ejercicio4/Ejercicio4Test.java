@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Facu on 18/9/2016.
  */
@@ -20,7 +18,7 @@ this.ejercicio4 = new Ejercicio4();
     @Test
     public void balanceo() throws Exception {
         boolean resultado=false;
-        Assert.assertSame(resultado, ejercicio4.Balanceo("{123+2+[x+3[y*32](z+x)]}"));
+        Assert.assertSame(resultado, ejercicio4.balanceo("{123+2+[x+3[y*32](z+x)]}"));
     }
 
 }

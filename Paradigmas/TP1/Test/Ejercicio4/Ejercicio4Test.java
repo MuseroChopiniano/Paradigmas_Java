@@ -18,11 +18,11 @@ public class Ejercicio4Test {
 
     @Test
     public void MenorA1() throws Exception {
-        Assert.assertTrue(5==Ejercicio4.Resultado(1/2,1/3));
+        Assert.assertTrue(5==Ejercicio4.resultado(1/2,1/3));
     }
 
     @Test
     public void MayorA1() throws Exception {
-        Assert.assertTrue(4==Ejercicio4.Resultado(1/2,2));
+        Assert.assertTrue(4==Ejercicio4.resultado(1/2,2));
     }
 }

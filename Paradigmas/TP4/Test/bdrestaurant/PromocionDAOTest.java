@@ -16,16 +16,67 @@ import static org.junit.Assert.*;
  */
 public class PromocionDAOTest {
     private PromocionDAO promocionDAO;
+    private  PlatoDAO platoDAO;
+    private  IngredienteDAO ingredienteDAO;
+    private  BebidaDAO bebidaDAO;
     @Before
     public void setUp() throws Exception {
-    promocionDAO = new PromocionDAO();
+        platoDAO=new PlatoDAO();
+        ingredienteDAO=new IngredienteDAO();
+        bebidaDAO=new BebidaDAO();
+        promocionDAO = new PromocionDAO();
         promocionDAO.Inicializar();
+        platoDAO.inicializar();
+        ingredienteDAO.inicializar();
+        bebidaDAO.inicializar();
+
+        /**Carga de Ingredientes en la BD */
+        ingredienteDAO.altaIngrediente("CarneParaMilanesa", "Carne");
+        ingredienteDAO.altaIngrediente("PanRallado", "Otros");
+        ingredienteDAO.altaIngrediente("Huevo", "Otros");
+        ingredienteDAO.altaIngrediente("Lechuga", "Verdura");
+        ingredienteDAO.altaIngrediente("Tomate", "Verdura");
+        ingredienteDAO.altaIngrediente("Fideos", "Pasta");
+        ingredienteDAO.altaIngrediente("Salsa", "Otros");
+        ingredienteDAO.altaIngrediente("Cebolla", "Verdura");
+
+/**Creacion de listas de ingredientes para cada plato */
+        List<String> ingredientesMilanesa = new ArrayList<String>();
+        ingredientesMilanesa.add("CarneParaMilanesa");
+        ingredientesMilanesa.add("PanRallado");
+        ingredientesMilanesa.add("Huevo");
+
+        List<String> ingredientesEnsalada = new ArrayList<String>();
+        ingredientesEnsalada.add("Lechuga");
+        ingredientesEnsalada.add("Tomate");
+        ingredientesEnsalada.add("Cebolla");
+
+        List<String> ingredientesFideos = new ArrayList<String>();
+        ingredientesFideos.add("Fideos");
+        ingredientesEnsalada.add("Salsa");
+/**Carga de Platos en la BD */
+        platoDAO.altaPlato("Milanesa", ingredientesMilanesa, 70);
+        platoDAO.altaPlato("EnsaladaMixta", ingredientesEnsalada, 50);
+        platoDAO.altaPlato("FideosConSalsa", ingredientesFideos, 70);
+
+        /** Creacion de listas de platos para cada Promocion */
         List<String> listaPlatosMila= new ArrayList<String>();
         listaPlatosMila.add("Milanesa");
         listaPlatosMila.add("EnsaladaMixta");
-        promocionDAO.altaPromocion("MilaconEnsalada","AguasinGas",listaPlatosMila,100);
+
         List<String> listaPlatosFideos= new ArrayList<String>();
-        listaPlatosFideos.add("Fideos");
+        listaPlatosFideos.add("FideosConSalsa");
+
+/** Carga de Bebidas en la BD*/
+
+        bebidaDAO.altaBebida("CervezaStella", 1000, 80);
+        bebidaDAO.altaBebida("CervezaStellaPorron", 350, 40);
+        bebidaDAO.altaBebida("CocaCola", 600, 40);
+        bebidaDAO.altaBebida("Agua", 500, 30);
+
+/**Carga de Promociones en la BD*/
+
+        promocionDAO.altaPromocion("MilaconEnsalada","Agua",listaPlatosMila,100);
         promocionDAO.altaPromocion("FideosconBebida","CervezaStellaPorron",listaPlatosFideos,100);
             }
 
@@ -42,10 +93,10 @@ public class PromocionDAOTest {
     public void altaPromocion() throws Exception {
         List<String> listaPlatos = new ArrayList<String>();
         listaPlatos.add("Milanesa");
-        listaPlatos.add("PapasFritas");
-        promocionDAO.altaPromocion("MilaConFritas","CocaCola",listaPlatos,150);
+        listaPlatos.add("FideosConSalsa");
+        promocionDAO.altaPromocion("MilaConFideos","CocaCola",listaPlatos,150);
         Assert.assertTrue(3==promocionDAO.devolverPromociones().size());
-        Assert.assertTrue(promocionDAO.devolverPromociones().contains("MilaConFritas"));
+        Assert.assertTrue(promocionDAO.devolverPromociones().contains("MilaConFideos"));
     }
     @Test
     public void borrarPromocion() throws  Exception {
@@ -57,8 +108,8 @@ public class PromocionDAOTest {
     public void modificarPromocion() throws Exception{
         List<String> listaPlatos = new ArrayList<String>();
         listaPlatos.add("Milanesa");
-        listaPlatos.add("PapasFritas");
-        promocionDAO.modificarPromocion("MilaconEnsalada","MilaconFritas","CocaCola",listaPlatos,153.50);
-        Assert.assertTrue(promocionDAO.devolverPromociones().contains("MilaconFritas"));
+        listaPlatos.add("FideosConSalsa");
+        promocionDAO.modificarPromocion("MilaconEnsalada","MilaconFideos","CocaCola",listaPlatos,153.50);
+        Assert.assertTrue(promocionDAO.devolverPromociones().contains("MilaconFideos"));
     }
 }

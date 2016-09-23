@@ -16,11 +16,11 @@ public class VerificadoraTest {
 
     @Test
     public void telNum() throws Exception {
-        Assert.assertTrue(Verificadora.TelNum("+541143282601"));
+        Assert.assertTrue(Verificadora.telNum("+541143282601"));
     }
     @Test
     public void telNumFalse() throws Exception{
-        Assert.assertFalse(Verificadora.TelNum("+542as22232551"));
+        Assert.assertFalse(Verificadora.telNum("+542as22232551"));
     }
     @Test
     public void Mail() throws  Exception{

@@ -6,7 +6,7 @@ package ejercicio4;
 public class Ejercicio4 {
 
     int Z;
-    public int Resultado(int x, int y) {
+    public int resultado(int x, int y) {
         if (x + y < 1) {
             Z = 5;
         } else if (x + y >= 1) {

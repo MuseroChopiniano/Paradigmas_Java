@@ -3,11 +3,6 @@ package bdrestaurant;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.Assert.*;
-
 /**
  * Created by GastónAlejandro on 19/09/2016.
  */
@@ -17,7 +12,7 @@ public class IngredienteDAOTest {
     @org.junit.Before
     public void setUp() throws Exception {
         ingredienteDAO=new IngredienteDAO();
-        ingredienteDAO.Inicializar();
+        ingredienteDAO.inicializar();
         ingredienteDAO.altaIngrediente("Papa","Verdura");
         ingredienteDAO.altaIngrediente("CarneParaMilanesa","Carne");
         ingredienteDAO.altaIngrediente("PanRallado","Otros");
@@ -31,7 +26,7 @@ public class IngredienteDAOTest {
 
     @org.junit.After
     public void tearDown() throws Exception {
-        ingredienteDAO.BorrarTodo();
+        ingredienteDAO.borrarTodo();
     }
 
     @Test

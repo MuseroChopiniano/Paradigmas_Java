@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by Facu on 18/9/2016.
  */
@@ -19,7 +17,7 @@ this.factorial = new Ejercicio7Factorial();
 
     @Test
     public void factorial() throws Exception {
-        Assert.assertTrue(24==factorial.Factorial(4));
+        Assert.assertTrue(24==factorial.factorial(4));
     }
 
 }

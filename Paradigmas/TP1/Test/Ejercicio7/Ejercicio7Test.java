@@ -17,7 +17,7 @@ this.Ejercicio7 = new Ejercicio7();
 
     @Test
     public void calculoTiempo() throws Exception {
-        Assert.assertTrue(300==Ejercicio7.CalculoTiempo(100, 500));
+        Assert.assertTrue(300==Ejercicio7.calculoTiempo(100, 500));
     }
 
 }

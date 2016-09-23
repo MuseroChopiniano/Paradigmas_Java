@@ -8,16 +8,16 @@ import java.util.List;
 
 public class BebidaDAO {
 
-    public static void Inicializar()
+    public static void inicializar()
     {
-        BaseDatos.Inicializar("CREATE TABLE BEBIDA(Bebida_Id INT,Bebida_Nombre VARCHAR(255),Bebida_Tamaño INT, Bebida_Precio DOUBLE);");
+        BaseDatos.inicializar("CREATE TABLE BEBIDA(Bebida_Id INT,Bebida_Nombre VARCHAR(255),Bebida_Tamaño INT, Bebida_Precio DOUBLE);");
     }
 
     public static void altaBebida(String nombre, int tamano, double precio) throws SQLException {
 
         int id= 0;
         try {
-            id = BaseDatos.ObtenerUltimoID("BEBIDA");
+            id = BaseDatos.obtenerUltimoID("Bebida");
         }
         catch (NullPointerException ex){
         }
@@ -26,25 +26,25 @@ public class BebidaDAO {
         }
 
         String insert = "INSERT INTO BEBIDA VALUES (" + id + ", '" + nombre + "', "+ tamano + ", " + precio + ");";
-        BaseDatos.Actualizar(insert);
+        BaseDatos.actualizar(insert);
     }
 
     public static void borrarBebida(String nombre){
         String delete = "DELETE FROM BEBIDA WHERE Bebida_Nombre = '" + nombre + "';";
-        BaseDatos.Actualizar(delete);
+        BaseDatos.actualizar(delete);
     }
 
     public static void modificarBebida(String nombreViejo, String nombreNuevo, int tamanoNuevo, double precioNuevo){
         String modificar = "UPDATE BEBIDA SET Bebida_Nombre = '" + nombreNuevo + "', Bebida_Tamaño = " + tamanoNuevo +
                            ", Bebida_Precio = " + precioNuevo + "WHERE Bebida_Nombre LIKE '" + nombreViejo + "';";
-        BaseDatos.Actualizar(modificar);
+        BaseDatos.actualizar(modificar);
     }
 
     public static List<String>  devolverBebidas() throws SQLException {
         List<String> listaBebidas = new ArrayList<String>();
         String select="SELECT Bebida_Nombre FROM BEBIDA;";
 
-        ResultSet resultSet = BaseDatos.Consulta(select);
+        ResultSet resultSet = BaseDatos.consulta(select);
 
         while (resultSet.next()){
             listaBebidas.add(resultSet.getString("Bebida_Nombre"));
@@ -56,7 +56,7 @@ public class BebidaDAO {
     public static int contar(){
         int contador=0;
         try {
-            ResultSet resultSet = BaseDatos.Consulta("SELECT COUNT(*) FROM BEBIDA;");
+            ResultSet resultSet = BaseDatos.consulta("SELECT COUNT(*) FROM BEBIDA;");
             resultSet.next();
             contador = resultSet.getInt(1);
             resultSet.close();

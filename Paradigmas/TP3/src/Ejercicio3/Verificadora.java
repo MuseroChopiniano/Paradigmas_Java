@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
  */
 public class Verificadora
 {
-    public boolean TelNum(String cadena)
+    public boolean telNum(String cadena)
     {
         boolean respuesta=false;
         Pattern patron= Pattern.compile("^[+]54+(\\d{10})");

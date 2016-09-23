@@ -17,7 +17,7 @@ public class Ejercicio5Test {
 
     @Test
     public void funcion() throws Exception {
-        Assert.assertTrue(999==Ejercicio5.Funcion(3,9));
+        Assert.assertTrue(999==Ejercicio5.funcion(3,9));
     }
 
 }

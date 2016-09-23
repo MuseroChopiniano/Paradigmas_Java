@@ -5,7 +5,7 @@ package ejercicio1;
  */
 public class Ejercicio1 {
     boolean resultado;
-    public boolean Pertenece(int x,int y) {
+    public boolean pertenece(int x, int y) {
         if (y == 7 * x + 3){
             resultado= true;
         }

@@ -18,11 +18,11 @@ public class Ejercicio1Test {
 
     @Test
     public void pertenece() throws Exception {
-        Assert.assertEquals(true, (Ejercicio1.Pertenece(1,10)));
+        Assert.assertEquals(true, (Ejercicio1.pertenece(1,10)));
     }
 
     @Test
-    public void nopertenece() throws Exception {
-        Assert.assertNotEquals(true, Ejercicio1.Pertenece(3,10));
+    public void noPertenece() throws Exception {
+        Assert.assertNotEquals(true, Ejercicio1.pertenece(3,10));
     }
 }

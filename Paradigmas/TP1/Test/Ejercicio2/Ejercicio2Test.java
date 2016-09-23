@@ -17,11 +17,11 @@ public class Ejercicio2Test {
 
     @Test
     public void Mayor() throws Exception {
-        Assert.assertTrue(8== Ejercicio2.Mayor(245831));
+        Assert.assertTrue(8== Ejercicio2.mayor(245831));
     }
 
     @Test
     public void NoMayor() throws Exception {
-        Assert.assertFalse(4== Ejercicio2.Mayor(245831));
+        Assert.assertFalse(4== Ejercicio2.mayor(245831));
     }
 }

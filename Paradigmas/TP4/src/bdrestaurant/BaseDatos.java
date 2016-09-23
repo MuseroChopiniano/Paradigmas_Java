@@ -7,7 +7,7 @@ import java.sql.*;
 public class BaseDatos
 {
 
-    public  static void Inicializar(String comando)
+    public  static void inicializar(String comando)
     {
         try {
             Class.forName("org.h2.Driver");
@@ -23,7 +23,7 @@ public class BaseDatos
         }
     }
     private static String ConnStr="jdbc:h2:C:/Users/GastónAlejandro/Desktop/Restaurant/restaurantDB";
-    public static ResultSet Consulta (String Comando)
+    public static ResultSet consulta(String Comando)
     {
         ResultSet retorno=null;
         try {
@@ -39,7 +39,7 @@ public class BaseDatos
         return  retorno;
     }
 
-    public static void Actualizar (String comando)
+    public static void actualizar(String comando)
     {
         try
         {
@@ -57,13 +57,13 @@ public class BaseDatos
         }
 
     }
-        public  static int ObtenerUltimoID(String tabla)
+        public  static int obtenerUltimoID(String tabla)
         {
             try {
                 Class.forName("org.h2.Driver");
                 Connection conexion=DriverManager.getConnection(ConnStr,"sa","");
                 Statement sentencia=conexion.createStatement();
-                ResultSet resultado=sentencia.executeQuery("SELECT MAX(1) FROM "+tabla);
+                ResultSet resultado=sentencia.executeQuery("SELECT MAX(" + tabla + "_Id) FROM " +tabla.toUpperCase());
                 resultado.next();
                 return resultado.getInt(1);
 
@@ -78,7 +78,7 @@ public class BaseDatos
             }
 
         }
-    public static void BorrarTodo(String Tabla)
+    public static void borrarTodo(String Tabla)
     {
         try {
             Class.forName("org.h2.Driver");
@@ -92,10 +92,6 @@ public class BaseDatos
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-    public static int ultimoID (String Tabla)
-    {
-     return 0;
     }
 
 }

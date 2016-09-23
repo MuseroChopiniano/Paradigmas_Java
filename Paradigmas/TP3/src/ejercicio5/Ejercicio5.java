@@ -8,10 +8,10 @@ public class Ejercicio5
 {
     public static void main(String[] args)
     {
-        GuardarMatrizTrans(MatrizTranspuesta(Matriz("C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/Matriz.txt")),"C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/MatrizTranspuesta.txt");
+        guardarMatrizTrans(matrizTranspuesta(leerMatriz("C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/Matriz.txt")),"C:/Users/GastónAlejandro/Desktop/Gastón/UNIVERSIDAD/UAI/3er AÑO/JAVA/Paradigmas_Java/Paradigmas/TP3/src/ejercicio5/MatrizTranspuesta.txt");
 
     }
-    public static int[][] Matriz(String Path)
+    public static int[][] leerMatriz(String Path)
     {
         List<String> Lista=new ArrayList<String>();
                 try {
@@ -45,7 +45,7 @@ public class Ejercicio5
         }
         return mimatriz;
     }
-    public static int[][] MatrizTranspuesta(int[][] matrizoriginal)
+    public static int[][] matrizTranspuesta(int[][] matrizoriginal)
     {
         int[][] matriztrans= new int[matrizoriginal[0].length][matrizoriginal.length];
         for(int i = 0; i < matrizoriginal.length; i++){
@@ -55,7 +55,7 @@ public class Ejercicio5
         }
         return matriztrans;
     }
-    public static void GuardarMatrizTrans(int[][] matriztrans,String path)
+    public static void guardarMatrizTrans(int[][] matriztrans,String path)
     {
         try{
             BufferedWriter buffwrite = new BufferedWriter(new FileWriter(path));

@@ -1,6 +1,5 @@
 package bdrestaurant;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,9 +12,9 @@ public class IngredienteDAO
 {
 
            /**funcion para inicializar para inicializar la tabla en la base de datos*/
-        public static void Inicializar()
+        public static void inicializar()
     {
-        BaseDatos.Inicializar("CREATE TABLE INGREDIENTE(Ingrediente_Id INT,Ingrediente_Nombre VARCHAR(255),Ingrediente_Tipo VARCHAR(250));");
+        BaseDatos.inicializar("CREATE TABLE INGREDIENTE(Ingrediente_Id INT,Ingrediente_Nombre VARCHAR(255),Ingrediente_Tipo VARCHAR(250));");
     }
 
     /**funcion que agrega ingredientes en la tabla de la BD*/
@@ -23,32 +22,32 @@ public class IngredienteDAO
     {
         int id= 0;
         try {
-            id = BaseDatos.ObtenerUltimoID("INGREDIENTE");                 /**LLama a ObtenerUltimoID para poder manejar el Autoincremento de ID desde aca*/
+            id = BaseDatos.obtenerUltimoID("Ingrediente");                 /**LLama a obtenerUltimoID para poder manejar el Autoincremento de ID desde aca*/
         }
         catch (NullPointerException ex){
         }
         finally {
             id+=1;
         }
-        BaseDatos.Actualizar("INSERT INTO INGREDIENTE "
+        BaseDatos.actualizar("INSERT INTO INGREDIENTE "
                 + "VALUES (" + id + ", '" + nombre + "', '" + tipo + "');");
     }
 
     /**funcion para borrar un ingrediente especifico pasado como String por parametro*/
     public static void borrarIngrediente(String nombre)
     {
-        BaseDatos.Actualizar("DELETE FROM INGREDIENTE WHERE Ingrediente_Nombre LIKE '"+nombre+"';");
+        BaseDatos.actualizar("DELETE FROM INGREDIENTE WHERE Ingrediente_Nombre LIKE '"+nombre+"';");
     }
     /**funcion que modifica un ingrediente especifico*/
     public static void modificarIngrediente(String nombreViejo, String nombreNuevo,String tipoNuevo)
     {
-        BaseDatos.Actualizar("UPDATE INGREDIENTE SET Ingrediente_Nombre='"+nombreNuevo+"', Ingrediente_Tipo='"+tipoNuevo+"' WHERE Ingrediente_Nombre LIKE '"+nombreViejo+"';");
+        BaseDatos.actualizar("UPDATE INGREDIENTE SET Ingrediente_Nombre='"+nombreNuevo+"', Ingrediente_Tipo='"+tipoNuevo+"' WHERE Ingrediente_Nombre LIKE '"+nombreViejo+"';");
     }
     /**devuelve una lista de todos los ingredientes de la tabla*/
     public static List<String> devolverIngredientes()
     {
         List<String> Lista = new ArrayList<String>();
-        ResultSet resultado= BaseDatos.Consulta("SELECT Ingrediente_Nombre FROM INGREDIENTE");
+        ResultSet resultado= BaseDatos.consulta("SELECT Ingrediente_Nombre FROM INGREDIENTE");
         try {
            while(resultado.next()){
             Lista.add(resultado.getString("Ingrediente_Nombre"));
@@ -62,7 +61,7 @@ public class IngredienteDAO
     public static List<String> devolverLasVerduras()
     {
         List<String> Lista= new ArrayList<String>();
-        ResultSet resultado=BaseDatos.Consulta("SELECT Ingrediente_Nombre FROM INGREDIENTE WHERE Ingrediente_Tipo LIKE 'Verdura'");
+        ResultSet resultado=BaseDatos.consulta("SELECT Ingrediente_Nombre FROM INGREDIENTE WHERE Ingrediente_Tipo LIKE 'Verdura'");
                 try{
             while(resultado.next()){
                 Lista.add(resultado.getString("Ingrediente_Nombre"));
@@ -72,9 +71,9 @@ public class IngredienteDAO
                 }
         return  Lista;
     }
-    public static void BorrarTodo()
+    public static void borrarTodo()
     {
-        BaseDatos.BorrarTodo("INGREDIENTE");
+        BaseDatos.borrarTodo("INGREDIENTE");
     }
 
 }

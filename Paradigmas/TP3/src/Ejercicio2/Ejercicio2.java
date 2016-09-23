@@ -21,8 +21,7 @@ public  class Ejercicio2
         {
 
             String path = "C:\\Users\\GastónAlejandro\\Desktop\\Gastón\\UNIVERSIDAD\\UAI\\3er AÑO\\JAVA\\Paradigmas_Java\\Paradigmas\\TP3\\src\\ejercicio2\\LenguajeDeclarativo.txt";
-            AnalizadorTxt(path);
-
+            analizadorTxt(path);
             interaccion();
         }
         public static void interaccion()
@@ -44,7 +43,7 @@ public  class Ejercicio2
            }while(pregunta.compareTo("0")!=0);
         }
 
-        public static void AnalizadorTxt(String archivo)
+        public static void analizadorTxt(String archivo)
         {
             String cadena;
             try
@@ -54,7 +53,7 @@ public  class Ejercicio2
                 while (cadena != null)
                 {
                     String[] partes = cadena.split ("[(]");
-                    CargarMaps(partes[0],partes[1]);
+                    cargarMaps(partes[0],partes[1]);
                     cadena=bufferread.readLine();
                 }
             }
@@ -67,7 +66,7 @@ public  class Ejercicio2
                 System.out.println ("\nSe produjo una IOException");
             }
         }
-        public static void CargarMaps(String tipo, String dato)
+        public static void cargarMaps(String tipo, String dato)
         {
             dato=dato.substring(0,dato.length()-1);
             String[] partesdato = dato.split(", ");
@@ -83,56 +82,68 @@ public  class Ejercicio2
 
         public static String evaluar(String eval, String nombre1, String nombre2)
         {
-            String respuesta="NO";
+           String respuesta="NO";
             if (eval.compareTo("esHermano")==0)
             {
-                if (padres.get(nombre1) != null & padres.get(nombre2) != null)
-                {
-                    if (padres.get(nombre1).compareTo(padres.get(nombre2)) == 0)
-                    {
-                        respuesta = "SI";
-                    }
-                }
-                if (madres.get(nombre1) != null & madres.get(nombre2) != null)
-                {
-                    if (madres.get(nombre1).compareTo(madres.get(nombre2)) == 0)
-                    {
-                        respuesta = "SI";
-                    }
-                }
+                respuesta=esHermano(nombre1,nombre2);
             }
             if (eval.compareTo("esAbuelo")==0)
             {
-                if (padres.get(nombre2)!=null & padres.get(padres.get(nombre2))!=null)
-                {
-                    if (padres.get(padres.get(nombre2)).compareTo(nombre1) == 0)
-                    {
-                        respuesta = "SI";
-                    }
-                }
-                if (padres.get(nombre2)!=null & madres.get(padres.get(nombre2))!=null)
-                {
-                    if (madres.get(padres.get(nombre2)).compareTo(nombre1)==0)
-                    {
-                        respuesta="SI";
-                    }
-                }
-                        if (madres.get(nombre2)!=null & padres.get(madres.get(nombre2))!=null)
-                        {
-                            if (padres.get(madres.get(nombre2)).compareTo(nombre1)==0)
-                            {
-                                respuesta="SI";
-                            }
-
-                        }
-                        if (madres.get(nombre2)!=null & madres.get(madres.get(nombre2))!=null)
-                        {
-                            if (madres.get(madres.get(nombre2)).compareTo(nombre1)==0)
-                            {
-                                respuesta="SI";
-                            }
-                        }
+                respuesta=esAbuelo(nombre1,nombre2);
             }
             return respuesta;
+        }
+        public static String esHermano(String nombre1, String nombre2)
+        {
+            String respuesta="NO";
+            if (padres.get(nombre1) != null & padres.get(nombre2) != null)
+            {
+                if (padres.get(nombre1).compareTo(padres.get(nombre2)) == 0)
+                {
+                    respuesta = "SI";
+                }
+            }
+            if (madres.get(nombre1) != null & madres.get(nombre2) != null)
+            {
+                if (madres.get(nombre1).compareTo(madres.get(nombre2)) == 0)
+                {
+                    respuesta = "SI";
+                }
+            }
+            return  respuesta;
+        }
+        public static String esAbuelo(String abuelo, String nieto)
+        {
+            String respuesta="NO";
+            if (padres.get(nieto)!=null & padres.get(padres.get(nieto))!=null)
+            {
+                if (padres.get(padres.get(nieto)).compareTo(abuelo) == 0)
+                {
+                    respuesta = "SI";
+                }
+            }
+            if (padres.get(nieto)!=null & madres.get(padres.get(nieto))!=null)
+            {
+                if (madres.get(padres.get(nieto)).compareTo(abuelo)==0)
+                {
+                    respuesta="SI";
+                }
+            }
+            if (madres.get(nieto)!=null & padres.get(madres.get(nieto))!=null)
+            {
+                if (padres.get(madres.get(nieto)).compareTo(abuelo)==0)
+                {
+                    respuesta="SI";
+                }
+
+            }
+            if (madres.get(nieto)!=null & madres.get(madres.get(nieto))!=null)
+            {
+                if (madres.get(madres.get(nieto)).compareTo(abuelo)==0)
+                {
+                    respuesta="SI";
+                }
+            }
+            return  respuesta;
         }
     }

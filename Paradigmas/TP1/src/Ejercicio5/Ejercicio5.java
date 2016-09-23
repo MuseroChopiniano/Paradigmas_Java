@@ -5,7 +5,7 @@ package ejercicio5;
  */
 public class Ejercicio5 {
     private int r;
-    public int Funcion(int x, int y) {
+    public int funcion(int x, int y) {
         for (int i=0; i<1001; i++) {
             if (i%x==0) {
                 if (i % y == 0) {

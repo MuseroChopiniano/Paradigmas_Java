@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class Ejercicio2 {
 
-    public int Mayor(int x){
+    public int mayor(int x){
         int Numero=0;
         int Divisor = 10;
         do{

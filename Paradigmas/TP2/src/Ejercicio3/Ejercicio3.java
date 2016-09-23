@@ -11,7 +11,7 @@ public class Ejercicio3 {
     public static String opcionConsola;
     public static int usuario;
 
-    public static String Juego(int x, int y) {
+    public static String juego(int x, int y) {
         if (x==y) {
             resultado = "Empate";
         } else{
@@ -68,6 +68,6 @@ public class Ejercicio3 {
         }
 
         System.out.println("La consola eligió \"" + opcionConsola + "\"");
-        System.out.println(Juego(usuario, consola));
+        System.out.println(juego(usuario, consola));
     }
 }

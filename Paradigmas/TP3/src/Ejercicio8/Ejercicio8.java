@@ -13,11 +13,11 @@ public class Ejercicio8
     {
         posicion=0;
         Arreglo=new String[(int)Math.pow(2,n)];
-        Combinar(n,"A");
-        Combinar(n,"N");
+        combinar(n,"A");
+        combinar(n,"N");
         return Arreglo;
     }
-    public  void Combinar(int n,String actualstr)
+    public  void combinar(int n, String actualstr)
     {
         if (actualstr.length()==n)
         {
@@ -26,8 +26,8 @@ public class Ejercicio8
         }
         else
         {
-            Combinar(n,actualstr+"A");
-            Combinar(n,actualstr+"N");
+            combinar(n,actualstr+"A");
+            combinar(n,actualstr+"N");
 
         }
     }
