@@ -1,7 +1,7 @@
 package ejercicio1;
 
 /**
- * Created by Facu on 22/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 22/10/2016.
  */
 public class NumeroComplejo {
     String valor;

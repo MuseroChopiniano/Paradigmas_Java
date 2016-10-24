@@ -1,12 +1,21 @@
 package ejercicio3;
 
 /**
- * Created by Facu on 22/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 22/10/2016.
  */
 public class Cuenta {
     int numero;
     double saldo;
     int pin;
+    Cliente cliente;
+
+    public Cuenta(int numero, Cliente cliente, int pin,Banco banco) {
+        this.numero = numero;
+        this.cliente= cliente;
+        this.pin = pin;
+        cliente.agregarCuenta(this);
+        banco.agregarCuenta(this);
+    }
 
     public double getSaldo() {
         return saldo;

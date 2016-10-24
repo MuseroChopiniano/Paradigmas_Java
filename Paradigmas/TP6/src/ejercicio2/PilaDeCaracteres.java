@@ -5,14 +5,11 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * Created by Facu on 22/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 22/10/2016.
  */
 public class PilaDeCaracteres {
     List<Character> pila= new ArrayList<Character>();
     int tamañoMax = 0;
-    Stack<Integer> asda = new Stack<Integer>();
-
-
 
     public PilaDeCaracteres() {
     }

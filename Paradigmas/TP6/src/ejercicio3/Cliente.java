@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Facu on 22/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 22/10/2016.
  */
-public abstract class Cliente {
+public class Cliente {
     String nombre;
     String apellido;
     int dni;
@@ -14,6 +14,14 @@ public abstract class Cliente {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public List<Cuenta> getListaCuentas() {
+        return listaCuentas;
+    }
+
+    public void setListaCuentas(List<Cuenta> listaCuentas) {
+        this.listaCuentas = listaCuentas;
     }
 
     public void setNombre(String nombre) {
@@ -46,5 +54,21 @@ public abstract class Cliente {
                 listaCuentas.remove(i);
             }
         }
+    }
+
+    public Cuenta getCuenta(int numeroCuenta, int pin){
+        Cuenta cuenta=null;
+        for (Cuenta c: this.getListaCuentas()) {
+            if (c.getNumero()==numeroCuenta & c.getPin()==pin){
+                cuenta=c;
+            }
+        }
+        return cuenta;
+    }
+
+    public Cliente(String nombre, String apellido, int dni) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
     }
 }
