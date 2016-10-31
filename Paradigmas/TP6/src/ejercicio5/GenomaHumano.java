@@ -39,4 +39,14 @@ public class GenomaHumano {
         Gen gen = new Gen(idGen, random);
         getListaGenes().add(gen);
     }
+
+    public List<Gen> clonar(){
+        List<Gen> clon = new ArrayList<Gen>();
+
+        for (Gen gen: getListaGenes()){
+            Gen genClon = new Gen(gen.getId(), gen.getCantidadNucleotidos());
+            clon.add(genClon);
+        }
+        return clon;
+    }
 }

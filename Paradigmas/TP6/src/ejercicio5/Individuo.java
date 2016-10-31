@@ -1,6 +1,9 @@
 package ejercicio5;
 
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -10,14 +13,14 @@ import java.util.Random;
 public class Individuo {
 
     GenomaHumano genomaHumano = GenomaHumano.getInstancia();
-    List<Gen> genes = genomaHumano.getListaGenes();
+    List<Gen> genes = genomaHumano.clonar();
     List<String> valoresPosibles = new ArrayList<String>();
 
     public Individuo() {
-        this.darValorANucleotidos();
+        darValorANucleotidos();
     }
 
-    public List<Gen> getGenes() {
+    private List<Gen> getGenes() {
         return genes;
     }
 
@@ -25,11 +28,11 @@ public class Individuo {
         this.genes = genes;
     }
 
-    public List<String> getValoresPosibles() {
+    private List<String> getValoresPosibles() {
         return valoresPosibles;
     }
 
-    public void setValoresPosibles(List<String> valoresPosibles) {
+    private void setValoresPosibles(List<String> valoresPosibles) {
         this.valoresPosibles = valoresPosibles;
         this.valoresPosibles.add("A");
         this.valoresPosibles.add("C");
@@ -37,7 +40,7 @@ public class Individuo {
         this.valoresPosibles.add("T");
     }
 
-    public List<Gen> genesIguales(Individuo otroIndividuo) {
+    List<Gen> genesIguales(Individuo otroIndividuo) {
         List<Gen> listaGenesIguales= new ArrayList<Gen>();
         int contadorGen=0;
         for (int i=0;i<25000;i++){
@@ -46,8 +49,8 @@ public class Individuo {
             while (!sonIguales && contadorGen<otroIndividuo.getGenes().size()){
                 Gen otroGen = otroIndividuo.getGenes().get(contadorGen);
                 sonIguales=compararGen(gen, otroGen);
+                contadorGen++;
             }
-            contadorGen++;
 
             if (sonIguales){
                 listaGenesIguales.add(gen);
@@ -57,7 +60,7 @@ public class Individuo {
         return listaGenesIguales;
     }
 
-    public boolean compararGen(Gen genIndividuo, Gen genOtroIndividuo){
+    private boolean compararGen(Gen genIndividuo, Gen genOtroIndividuo){
         boolean esIgual=false;
         int contador=0;
         if (genIndividuo.getCantidadNucleotidos()==genOtroIndividuo.getCantidadNucleotidos()){
@@ -75,12 +78,13 @@ public class Individuo {
         return esIgual;
     }
 
-    public void darValorANucleotidos(){
+    private void darValorANucleotidos(){
         setValoresPosibles(this.valoresPosibles);
-        for (Gen gen:genes){
+        for (Gen gen:this.getGenes()){
             for (int i=0;i<=gen.getCantidadNucleotidos()-1;i++){
-                int random = new Random().nextInt(getValoresPosibles().size());
-                gen.agregarNucleotido(getValoresPosibles().get(random));
+                Random random = new Random();
+                int valor= random.nextInt(getValoresPosibles().size());
+                gen.agregarNucleotido(getValoresPosibles().get(valor));
             }
         }
     }

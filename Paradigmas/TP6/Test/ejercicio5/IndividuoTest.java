@@ -11,14 +11,14 @@ import static org.junit.Assert.*;
  */
 public class IndividuoTest {
     Individuo individuo;
+    
     @Before
     public void setUp() throws Exception {
-this.individuo = new Individuo();
+        this.individuo = new Individuo();
     }
 
     @Test
     public void darValorANucleotidos() throws Exception {
-        Assert.assertTrue(25000==this.individuo.genesIguales(individuo).size());
+        Assert.assertTrue(25000==individuo.genesIguales(individuo).size());
     }
-
 }
