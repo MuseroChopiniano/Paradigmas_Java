@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 public class IndividuoTest {
     Individuo individuo;
-    
+
     @Before
     public void setUp() throws Exception {
         this.individuo = new Individuo();
