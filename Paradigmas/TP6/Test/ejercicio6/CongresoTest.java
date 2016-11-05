@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by Facu on 31/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 31/10/2016.
  */
 public class CongresoTest {
     Congreso congreso;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Facu on 31/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 31/10/2016.
  */
 public class Congreso {
 
