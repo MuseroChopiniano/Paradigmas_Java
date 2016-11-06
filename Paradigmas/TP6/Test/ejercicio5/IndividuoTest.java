@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by Facu on 27/10/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 27/10/2016.
  */
 public class IndividuoTest {
     Individuo individuo;

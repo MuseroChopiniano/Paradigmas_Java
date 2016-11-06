@@ -3,54 +3,51 @@ package ejercicio7;
 import java.util.*;
 
 /**
- * Created by Facu on 4/11/2016.
+ * Created by Facundo Tripelhorn y Gastón Suarez on 4/11/2016.
  */
 public class JuegoDeLaSilla {
 
-    int cantDeSillas;
-    List<String> listaJugadores = new ArrayList<String>();
-    int nroRonda;
+   static int cantDeSillas;
+    static List<String> listaJugadores = new ArrayList<String>();
+    static int nroRonda;
 
-    public int getCantDeSillas() {
+    public static int getCantDeSillas() {
         return cantDeSillas;
     }
 
-    public void setCantDeSillas(int cantDeSillas) {
-        this.cantDeSillas = cantDeSillas;
+    public static void setCantDeSillas(int cantDeSillas) {cantDeSillas = cantDeSillas;
     }
 
-    public List<String> getListaJugadores() {
+    public static List<String> getListaJugadores() {
         return listaJugadores;
     }
 
-    public void setListaJugadores(List<String> listaJugadores) {
-        this.listaJugadores = listaJugadores;
+    public static void setListaJugadores(List<String> listaJugadores) {
+        listaJugadores = listaJugadores;
     }
 
-    public List<String> agregarJugadores(int cantJugadores){
-        List<String> lista = new ArrayList<String>();
+    public static void agregarJugadores(){
+        Scanner cantScanner = new Scanner(System.in);
         Scanner nombreScanner = new Scanner(System.in);
         String nombre;
-
+        System.out.print("Ingrese la cantidad de jugadores: \n");
+        int cantJugadores = cantScanner.nextInt();
+        cantDeSillas=cantJugadores-1;
         for (int i=1;i<=cantJugadores;i++){
             System.out.print("Ingrese el nombre del jugador: \n");
             nombre=nombreScanner.nextLine();
-            lista.add(nombre);
+            listaJugadores.add(nombre);
         }
-        return lista;
     }
 
-    public void nuevaVuelta(){
+    public static void nuevaVuelta(){
         int musica;
         Random tiempo = new Random();
         Random jugador = new Random();
         String perdedor = getListaJugadores().get(jugador.nextInt(getListaJugadores().size()));
         eliminarJugador(perdedor);
         Map<String, Integer> mapaJuego = new HashMap<String, Integer>();
-        for (int i = 0;i<=getListaJugadores().size();i++){
-            mapaJuego.put(getListaJugadores().get(i),i);
 
-        }
         cantDeSillas--;
         musica=tiempo.nextInt(60);
         try{
@@ -58,17 +55,27 @@ public class JuegoDeLaSilla {
         }catch (Exception e){
             System.out.print("Se rompio el grabador");
         }
-        System.out.print("Ronda "+ nroRonda + ": La música sonó "+ musica + " segundos y cuando paró la música perdió");
+        System.out.print("Ronda "+ nroRonda + ": La música sonó "+ musica + " segundos y cuando paró la música perdió " + perdedor+"\n");
     }
 
-    public void eliminarJugador(String jugador){
+    public static void eliminarJugador(String jugador){
         getListaJugadores().remove(jugador);
     }
 
-    public void jugar(){
-        do {
-            nuevaVuelta();
-        }while (cantDeSillas>1);
+    public static void jugar(){
+        do{
+        nroRonda++;
+        nuevaVuelta();
+        }while (getCantDeSillas()>=1);
+        if (cantDeSillas==0){
+            System.out.print("Ganó " + getListaJugadores().get(0) + "\n");
+        }
     }
+
+    public static void main(String[] args){
+        agregarJugadores();
+        getCantDeSillas();
+        jugar();
+      }
 
 }
