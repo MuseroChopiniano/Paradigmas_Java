@@ -13,7 +13,7 @@ public class LacteosTest {
     private  Lacteos lacteo;
     @Before
     public void setUp() throws Exception {
-lacteo=new Lacteos();
+        lacteo=new Lacteos();
         lacteo.setPrecio(20);
     }
 

@@ -41,6 +41,9 @@ public class RegistroDeLasPersonas {
         System.out.println(listaPersonas);
     }
 
-    public void retornarPersonasOrdenadasDeMenorAMayor()
-    {}
+    public void retornarPersonasOrdenadasDeMenorAMayor() {
+    this.listaPersonas.sort(Persona::compareTo);
+        imprimirListaDePersonas();
+    }
+
 }

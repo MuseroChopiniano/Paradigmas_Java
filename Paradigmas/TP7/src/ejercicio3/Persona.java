@@ -1,11 +1,14 @@
 package ejercicio3;
 
+import com.sun.org.apache.xml.internal.security.algorithms.implementations.IntegrityHmac;
 import com.sun.org.glassfish.gmbal.ManagedObject;
+
+import java.util.Comparator;
 
 /**
  * Created by GastónAlejandro on 05/11/2016.
  */
-public class Persona {
+public class Persona implements Comparable<Persona>{
     /** Atributos */
 
     private String DNI;
@@ -50,4 +53,9 @@ public class Persona {
         }
         else {return false;}
     }
+
+    @Override
+    public int compareTo(Persona o) {
+        return o.getDNI().compareTo(this.getDNI());
     }
+}

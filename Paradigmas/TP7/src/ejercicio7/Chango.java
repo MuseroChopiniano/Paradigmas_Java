@@ -10,7 +10,15 @@ public class Chango {
 
     private List<ProductoDeVenta> productos =new ArrayList<ProductoDeVenta>();
 
-    public void agregarProducto(ProductoDeVenta pProducto){this.productos.add(pProducto);}
+    public void agregarProducto(ProductoDeVenta pProducto){
+        boolean flag=false;
+        for (int i= 0;i<productos.size();i++)
+            if (flag==false && pProducto.equals(productos.get(i)))
+            {
+                pProducto.promoDescuento70SegundaUnidad();
+                flag=true;
+            }
+        this.productos.add(pProducto);}
     public List<ProductoDeVenta> getProductos(){return this.productos;}
 
 }

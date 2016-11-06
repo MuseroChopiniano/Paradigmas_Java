@@ -1,5 +1,7 @@
 package ejercicio7;
 
+import java.util.List;
+
 /**
  * Created by GastónAlejandro on 05/11/2016.
  */
@@ -18,5 +20,4 @@ public class Caja {
             liquidacionCaja+=pChango.getProductos().get(i).getPrecioVenta();
         }
     }
-
 }

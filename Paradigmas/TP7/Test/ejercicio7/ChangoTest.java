@@ -19,10 +19,14 @@ public class ChangoTest {
     public void setUp() throws Exception {
         chango=new Chango();
         carneroja=new Carne(Carne.tipoCarne.roja);
+        carneroja.setNombre("Tapa de Asado");
         lacteo1=new Lacteos();
+        lacteo1.setNombre("Leche Sancor");
         enlatado1=new Enlatados();
+        enlatado1.setNombre("Arvejas");
         perfume=new Perfume(500);
-                chango.agregarProducto(carneroja);
+        perfume.setNombre("One Million");
+        chango.agregarProducto(carneroja);
         chango.agregarProducto(lacteo1);
         chango.agregarProducto(enlatado1);
         chango.agregarProducto(perfume);
@@ -31,6 +35,7 @@ public class ChangoTest {
     @Test
     public void agregarProducto() throws Exception {
         Indumentaria remera =new Indumentaria("Nike", "Small");
+        remera.setNombre("Remera");
         chango.agregarProducto(remera);
         Assert.assertTrue(5==chango.getProductos().size());
     }

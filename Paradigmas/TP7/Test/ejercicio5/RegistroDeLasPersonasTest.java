@@ -58,7 +58,7 @@ public class RegistroDeLasPersonasTest {
         pPersona.setApellido("Perez");
         registro.agregarPersona(pPersona);
         registro.imprimirListaDePersonas();
-        Assert.assertEquals(3,registro.cantidadPersonas());
+              Assert.assertEquals(3,registro.cantidadPersonas());
     }
 
 }

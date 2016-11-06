@@ -21,4 +21,5 @@ public class Carne extends ProductoAlimenticio
                 return super.getPrecioVenta();
             }
     }
+
 }
