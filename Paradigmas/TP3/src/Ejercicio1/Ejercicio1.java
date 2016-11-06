@@ -6,7 +6,7 @@ package ejercicio1;
 public class Ejercicio1 {
     public double retornaResultado(String pString)
     {
-        double mResultado = 0;
+                double mResultado = 0;
         String operandos [];
         operandos= new String[3];
         operandos=pString.split(" ");

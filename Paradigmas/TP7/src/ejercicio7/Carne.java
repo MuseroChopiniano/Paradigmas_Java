@@ -1,0 +1,24 @@
+package ejercicio7;
+
+/**
+ * Created by GastónAlejandro on 05/11/2016.
+ */
+public class Carne extends ProductoAlimenticio
+{
+    public enum tipoCarne{roja,blanca}
+    private tipoCarne tipo;
+
+    public Carne(tipoCarne pTipo){this.tipo=pTipo;}
+
+
+    @Override
+    public double getPrecioVenta() {
+            if (this.tipo==tipoCarne.roja)
+            {
+                return super.getPrecioVenta()*0.10;
+            }
+            else {
+                return super.getPrecioVenta();
+            }
+    }
+}

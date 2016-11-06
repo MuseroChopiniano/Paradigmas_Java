@@ -1,23 +1,27 @@
-package ejercicio1;
+package ejercicio3;
+
+import java.io.Console;
+import java.util.ArrayList;
 
 /**
- * Created by GastónAlejandro on 17/10/2016.
+ * Created by GastónAlejandro on 05/11/2016.
  */
 public class Plato {
-
     /**Atributos*/
     private String nombre;
     private int cantidadIngredientes;
     private double precioBase;
+    private ArrayList<Integer> puntajeOpiniones=new ArrayList<Integer>();
+    private Cocinero cocinero;
 
-/**Getters y setters*/
+    /**Getters y setters*/
     public String getNombre()
     {
         return nombre;
     }
     public void setNombre(String pNombre)
     {
-       this.nombre=pNombre;
+        this.nombre=pNombre;
     }
     public int getCantidadIngredientes()
     {
@@ -35,7 +39,11 @@ public class Plato {
     {
         this.precioBase=pPrecioBase;
     }
+    public Cocinero getCocinero(){return this.cocinero;}
+    public void setCocinero(Cocinero pCocinero){this.cocinero=pCocinero;
+    cocinero.agregarPlato(this);}
 
+    /**Métodos*/
 
     public double getPrecio()
     {
@@ -49,7 +57,27 @@ public class Plato {
         }
     }
 
+    public double getOpinionPromedio()
+    {
+        double retorno=0;
+        for (int i=0;i<this.puntajeOpiniones.size();i++)
+        {
+            retorno+=this.puntajeOpiniones.get(i);
+        }
 
+        return retorno/this.puntajeOpiniones.size();
+    }
+    public void agregarOpinion(int unPuntaje)
+    {
+        this.puntajeOpiniones.add(unPuntaje);
+    }
+
+    public String getMailDelCocinero(){return this.cocinero.getDireccionEmail();}
+
+    public void imprimite()
+    {
+            System.out.println(this.getNombre() + "(" + this.getOpinionPromedio() + " puntos) - " + this.getMailDelCocinero());
+    }
     /**Constructores*/
     public Plato()
     {

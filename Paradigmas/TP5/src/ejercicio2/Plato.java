@@ -1,7 +1,9 @@
-package ejercicio1;
+package ejercicio2;
+
+import java.util.ArrayList;
 
 /**
- * Created by GastónAlejandro on 17/10/2016.
+ * Created by GastónAlejandro on 05/11/2016.
  */
 public class Plato {
 
@@ -9,15 +11,16 @@ public class Plato {
     private String nombre;
     private int cantidadIngredientes;
     private double precioBase;
+    private ArrayList<Integer> puntajeOpiniones=new ArrayList<Integer>();
 
-/**Getters y setters*/
+    /**Getters y setters*/
     public String getNombre()
     {
         return nombre;
     }
     public void setNombre(String pNombre)
     {
-       this.nombre=pNombre;
+        this.nombre=pNombre;
     }
     public int getCantidadIngredientes()
     {
@@ -36,6 +39,7 @@ public class Plato {
         this.precioBase=pPrecioBase;
     }
 
+/**Métodos*/
 
     public double getPrecio()
     {
@@ -49,6 +53,20 @@ public class Plato {
         }
     }
 
+    public double getOpinionPromedio()
+    {
+        double retorno=0;
+        for (int i=0;i<this.puntajeOpiniones.size();i++)
+        {
+            retorno+=this.puntajeOpiniones.get(i);
+        }
+
+        return retorno/this.puntajeOpiniones.size();
+    }
+    public void agregarOpinion(int unPuntaje)
+    {
+        this.puntajeOpiniones.add(unPuntaje);
+    }
 
     /**Constructores*/
     public Plato()

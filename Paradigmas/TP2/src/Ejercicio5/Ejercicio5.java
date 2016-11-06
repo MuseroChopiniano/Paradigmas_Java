@@ -24,7 +24,7 @@ public class Ejercicio5 {
     public void archivos(int[] array) {
         try {
             File primos = new File("primos.txt");
-            FileWriter escribirprimos = new FileWriter(primos, true);
+            FileWriter escribirprimos = new FileWriter(primos,true);
             File divisores3000 = new File("divisores de 3000.txt");
             FileWriter escribirdivisores = new FileWriter(divisores3000, true);
             File promedios = new File("promedios.txt");
