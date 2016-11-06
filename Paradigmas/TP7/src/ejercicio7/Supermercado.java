@@ -10,6 +10,10 @@ public class Supermercado {
 
     private List<Caja> cajas = new ArrayList<Caja>();
 
+    public void agregarCaja(Caja pCaja)
+    {
+        this.cajas.add(pCaja);
+    }
     /**Metodos*/
     public double liquidacionDelDia()
     {
@@ -20,4 +24,6 @@ public class Supermercado {
     }
         return facturacion;
     }
+    public int cantCajas()
+    {return this.cajas.size();}
 }

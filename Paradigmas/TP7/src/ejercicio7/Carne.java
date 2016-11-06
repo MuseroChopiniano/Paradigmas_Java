@@ -15,7 +15,7 @@ public class Carne extends ProductoAlimenticio
     public double getPrecioVenta() {
             if (this.tipo==tipoCarne.roja)
             {
-                return super.getPrecioVenta()*0.10;
+                return super.getPrecioVenta()*0.90;  /**Si carne es roja se le descuenta un 10%*/
             }
             else {
                 return super.getPrecioVenta();
