@@ -11,12 +11,12 @@ import java.util.List;
 public class PersonTranslator {
 
     public Person translate(PersonDTO personDTO) {
-        return new Person(personDTO.getId(), personDTO.getName(), personDTO.getAge(), personDTO.getParent());
+        return new Person(personDTO.getId(), personDTO.getName(), personDTO.getAge());
     }
 
     public PersonDTO translateToDTO(Person person) {
         if (person != null) {
-            return new PersonDTO(person.getId(), person.getName(), person.getAge(), person.getParent());
+            return new PersonDTO(person.getId(), person.getName(), person.getAge());
         }
         return null;
     }

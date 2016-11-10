@@ -23,13 +23,22 @@ public class Person {
     @Column(name = "AGE", nullable = false)
     private Integer age;
 
+
     @ManyToOne
-    @JoinColumn(name = "PADRE")
-    private Person parent;
+    @JoinColumn(name= "PADRE")
+    private Person padre;
 
     @OneToMany
     @JoinColumn(name="PADRE")
-    List<Person> hijos = new ArrayList<Person>();
+   private List<Person> hijos = new ArrayList<Person>();     /**Lista de Hijos*/
+
+    public Person getPadre() {
+        return padre;
+    }
+    public List<Person> getHijos() {
+        return hijos;
+    }
+
 
     public Person() {
     }
@@ -38,14 +47,6 @@ public class Person {
         this.id = id;
         this.name = name;
         this.age = age;
-
-    }
-
-    public Person(Integer id, String name, Integer age, Person parent) {
-        this.id=id;
-        this.name = name;
-        this.age = age;
-        this.parent = parent;
     }
 
     public Integer getId() {
@@ -61,25 +62,22 @@ public class Person {
     }
 
 
-    public Person getParent() {
-        return parent;
+    public void setPadre(Person pPadre)
+    {
+        this.padre=pPadre;
     }
-    public void setParent(Person parent) {
-        this.parent = parent;
+    public void agregarHijos(Person pPersona)
+    {
+        if (pPersona!=null)
+        {
+            if (hijos.contains(pPersona)==false){
+            this.hijos.add(pPersona);
+            pPersona.setPadre(this);}
+        }
     }
 
     @Override
     public String toString() {
         return this.getClass().getSimpleName() + " [id=" + id + ", name=" + name + ", age=" + age + "]";
     }
-
-
-    public void setHijos(List<Person> hijos) {
-        this.hijos = hijos;
-    }
-
-    public void agregarHijos(Person hijo){
-        hijos.add(hijo);
-    }
 }
-

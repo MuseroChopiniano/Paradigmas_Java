@@ -33,23 +33,23 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public List<Person> retrieveByCriteria(PersonCriteria criteria) {
-        return this.personDAO.retrieveByCriteria(criteria);
-    }
-
-    @Override
-    public Person updatePerson(Person person){
-        return this.personDAO.update(person);
+    public Person updatePerson(Person person) {
+    return this.personDAO.update(person);
     }
 
     @Transactional
     @Override
-    public Person agregarHijo(Integer padreID, Person hijo) {
-        Person padre = this.retrievePerson(padreID);
+    public Person agregarHijo(Integer padreID,Person hijo){
+        Person padre=this.retrievePerson(padreID);
         padre.agregarHijos(hijo);
-        hijo.setParent(padre);
         this.savePerson(hijo);
         this.updatePerson(padre);
         return padre;
     }
+
+    @Override
+    public List<Person> retrieveByCriteria(PersonCriteria criteria) {
+        return this.personDAO.retrieveByCriteria(criteria);
+    }
+
 }

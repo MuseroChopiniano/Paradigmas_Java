@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,12 +66,19 @@ public class PersonController {
         return new ResponseEntity<PersonDTO>(HttpStatus.NO_CONTENT);
     }
 
-  //  @RequestMapping(method = RequestMethod.GET, value = "/{identifier}/getHijos")
-  //  public
-  //  @ResponseBody List<PersonDTO> getHijos(){
-  //      List<PersonDTO> hijos = new ArrayList<PersonDTO>();
-   //     return hijos;
-   // }
+        @RequestMapping(method = RequestMethod.PUT,value="/{identifier}",consumes = "application/json")
+        @ResponseBody
+        ResponseEntity<PersonDTO> agregarHijo(@PathVariable Integer identifier, @RequestBody PersonDTO personDTO) throws  InterruptedException {
+            Person hijo = this.personTranslator.translate(personDTO);
+            if (this.personService.retrievePerson(identifier) != null & hijo != null) {
+                return new ResponseEntity<PersonDTO>(this.personTranslator.translateToDTO(this.personService.agregarHijo(identifier,hijo)),HttpStatus.OK);
+            } else
+            {
+                return new ResponseEntity<PersonDTO>(HttpStatus.NO_CONTENT);
+            }
+        }
+
+
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/{identifier}")
     public
@@ -81,19 +87,4 @@ public class PersonController {
         this.personService.deletePerson(identifier);
         return new ResponseEntity<String>(HttpStatus.NO_CONTENT);
     }
-
-
-   @RequestMapping(method = RequestMethod.PUT, value = "/{identifier}", consumes = "application/json")
-   public
-   @ResponseBody
-   ResponseEntity<PersonDTO>agregarHijo(@PathVariable Integer identifier, @RequestBody PersonDTO personDTO){
-       Person hijo = this.personTranslator.translate(personDTO);
-       if (this.personService.retrievePerson(identifier)!=null & hijo!=null){
-           return new ResponseEntity<PersonDTO>(this.personTranslator.
-                   translateToDTO(this.personService.agregarHijo(identifier, hijo)), HttpStatus.OK);
-       }else{
-           return new ResponseEntity<PersonDTO>(HttpStatus.NO_CONTENT);
-       }
-   }
-
 }
