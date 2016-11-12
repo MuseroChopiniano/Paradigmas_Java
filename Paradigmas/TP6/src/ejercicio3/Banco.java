@@ -88,13 +88,7 @@ public class Banco {
 
     public void cobrar(Cliente cliente, Cuenta cuenta){
         Cuenta c=cliente.getCuenta(cuenta.getNumero(), cuenta.getPin());
-        if (cliente instanceof ClienteVIP){
-            if (((ClienteVIP) cliente).isViveEnCapital()) {
-                c.setSaldo(c.getSaldo() - 2);
-            }
-        } else {
-            c.setSaldo(c.getSaldo()-6);
-        }
+        cliente.descuento(c);
     }
 
     public double generarInforme(){

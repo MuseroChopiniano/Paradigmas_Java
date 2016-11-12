@@ -71,4 +71,9 @@ public class Cliente {
         this.apellido = apellido;
         this.dni = dni;
     }
+
+    public void descuento(Cuenta cuenta){
+        cuenta.setSaldo(cuenta.getSaldo()-6);
+    }
 }
+

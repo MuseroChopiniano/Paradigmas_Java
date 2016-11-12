@@ -12,10 +12,17 @@ public class ClienteVIP extends Cliente {
     }
 
     public boolean isViveEnCapital() {
-        return viveEnCapital;
+                return viveEnCapital;
     }
 
     public void setViveEnCapital(boolean viveEnCapital) {
         this.viveEnCapital = viveEnCapital;
+    }
+
+    @Override
+    public void descuento(Cuenta cuenta){
+        if (isViveEnCapital()){
+            cuenta.setSaldo(cuenta.getSaldo()-2);
+        }
     }
 }
