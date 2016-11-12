@@ -1,7 +1,7 @@
 package ejercicio6;
 
 /**
- * Created by GastónAlejandro on 05/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 05/11/2016.
  */
 public enum tipoLocalidad {
     adelante(5),

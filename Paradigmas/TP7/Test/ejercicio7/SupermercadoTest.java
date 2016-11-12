@@ -8,7 +8,7 @@ import sun.font.CreatedFontTracker;
 import static org.junit.Assert.*;
 
 /**
- * Created by GastónAlejandro on 06/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 06/11/2016.
  */
 public class SupermercadoTest {
     private Supermercado supermercado;

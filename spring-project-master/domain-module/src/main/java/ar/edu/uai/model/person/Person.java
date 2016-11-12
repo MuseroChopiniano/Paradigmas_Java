@@ -28,9 +28,9 @@ public class Person {
     @JoinColumn(name= "PADRE")
     private Person padre;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)/**(mappedBy = "PADRE")*/
     @JoinColumn(name="PADRE")
-   private List<Person> hijos = new ArrayList<Person>();     /**Lista de Hijos*/
+   private List<Person> hijos ;     /**Lista de Hijos*/
 
     public Person getPadre() {
         return padre;
@@ -41,12 +41,14 @@ public class Person {
 
 
     public Person() {
+        hijos= new ArrayList<Person>();
     }
 
     public Person(Integer id, String name, Integer age) {
         this.id = id;
         this.name = name;
         this.age = age;
+        hijos= new ArrayList<Person>();
     }
 
     public Integer getId() {
@@ -60,7 +62,6 @@ public class Person {
     public int getAge() {
         return age;
     }
-
 
     public void setPadre(Person pPadre)
     {

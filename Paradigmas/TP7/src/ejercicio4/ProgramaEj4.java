@@ -3,7 +3,7 @@ package ejercicio4;
 import ejercicio3.Persona;
 
 /**
- * Created by GastónAlejandro on 05/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 05/11/2016.
  */
 public class ProgramaEj4 {
     public static void main(String args[])

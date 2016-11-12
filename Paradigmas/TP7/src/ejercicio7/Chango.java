@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by GastónAlejandro on 05/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 05/11/2016.
  */
 public class Chango {
 

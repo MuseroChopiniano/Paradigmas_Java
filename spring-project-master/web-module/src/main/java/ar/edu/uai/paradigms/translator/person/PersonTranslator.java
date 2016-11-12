@@ -5,6 +5,7 @@ import ar.edu.uai.model.person.PersonCriteria;
 import ar.edu.uai.paradigms.dto.person.PersonCriteriaDTO;
 import ar.edu.uai.paradigms.dto.person.PersonDTO;
 
+import javax.print.DocFlavor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,27 @@ public class PersonTranslator {
     }
 
     public PersonDTO translateToDTO(Person person) {
-        if (person != null) {
-            return new PersonDTO(person.getId(), person.getName(), person.getAge());
+        if (person != null)  {
+          /**  if (person.getPadre()!=null){
+            return new PersonDTO(person.getId(), person.getName(), person.getAge(),person.getPadre().getName());}
+            else*/
+            {
+                PersonDTO personDTOTraducida;
+                personDTOTraducida = new PersonDTO(person.getId(), person.getName(), person.getAge());
+                if (person.getPadre() != null)
+                {
+                    personDTOTraducida.setPadre(person.getPadre().getName());
+                }
+                if (person.getHijos().size()>0)
+                {
+                    for (int i=0;i<person.getHijos().size();i++)
+                    {
+                        personDTOTraducida.agregarHijos(person.getHijos().get(i).getName());
+                    }
+
+                }
+                return personDTOTraducida;
+            }
         }
         return null;
     }

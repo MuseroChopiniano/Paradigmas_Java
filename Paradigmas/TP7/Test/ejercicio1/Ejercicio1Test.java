@@ -8,7 +8,7 @@ import org.omg.PortableInterceptor.Interceptor;
 import static org.junit.Assert.*;
 
 /**
- * Created by GastónAlejandro on 05/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 05/11/2016.
  */
 public class Ejercicio1Test {
     private  Ejercicio1 ejercicio1;

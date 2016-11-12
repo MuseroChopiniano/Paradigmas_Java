@@ -7,7 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * Created by GastónAlejandro on 06/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 06/11/2016.
  */
 public class CajaTest {
     private Caja caja;

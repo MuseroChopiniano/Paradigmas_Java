@@ -5,7 +5,7 @@ import ejercicio8.IA;
 import ejercicio8.IB;
 
 /**
- * Created by GastónAlejandro on 06/11/2016.
+ * Created by GastónAlejandro and Facundo Tripelhorn on 06/11/2016.
  */
 public class Programa {
     public static void main(String args[])

@@ -17,6 +17,8 @@ public class PersonDTO {
 
     private String name;
     private int age;
+    private String padre="NO FATHER";
+
 
     @JsonCreator
     public PersonDTO(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("age") int age) {
@@ -25,21 +27,20 @@ public class PersonDTO {
         this.age = age;
     }
 
-   /** @JsonCreator
-    public PersonDTO(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("age") int age, @JsonProperty("padre") Person padre, @JsonProperty("hijos")List<Person> hijos) {
+  /**  public PersonDTO(@JsonProperty("id") Integer id, @JsonProperty("name") String name, @JsonProperty("age")int age,@JsonProperty("padre")String pPadre) {
         this.id=id;
         this.name=name;
         this.age=age;
-        this.padre=padre.getName();
-        if (hijos.size()!=0){
+        this.padre=pPadre;
+        /**if (hijos.size()!=0){
         for (int i=0;i<hijos.size();i++)
         {
             this.hijos.add(hijos.get(i).getName());
         }
-        }
-    }
 
-*/
+    } */
+    private List<String> hijos=new ArrayList<String>();
+
     public Integer getId() {
         return id;
     }
@@ -51,13 +52,17 @@ public class PersonDTO {
     public int getAge() {
         return age;
     }
-  /**  public String getPadre(){return padre;}
+    public String getPadre(){return padre;}
+    public void setPadre(String pPadre){
+        this.padre=pPadre;
+    }
+    public void agregarHijos(String pHijos){this.hijos.add(pHijos);}
+    public List<String> getHijos(){
+        return       this.hijos;}
 
-    public List<String> getHijos(){return this.hijos;}
-*/
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + " [id=" + id + ", name=" + name + ", age=" + age + "]";
+        return this.getClass().getSimpleName() + " [id=" + id + ", name=" + name + ", age=" + age + ", padre=" + padre /**+ ", Hijos=" + getHijos() */ + "]";
 
     }
 
